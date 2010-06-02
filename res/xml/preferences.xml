@@ -1,0 +1,29 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/preferences">
+		<CheckBoxPreference android:defaultValue="true"
+			android:key="Enabled" android:title="@string/pref_enable_title"
+			android:summary="@string/pref_enable_summary"></CheckBoxPreference>
+		<ListPreference android:entryValues="@array/entryvalues_period"
+			android:entries="@array/entries_period" android:defaultValue="0"
+			android:key="Period" android:dependency="Enabled" android:title="@string/pref_period_title"
+			android:summary="@string/pref_period_summary"></ListPreference>
+		<net.assemble.timetone.TimetoneHoursPreference
+			android:key="Hours" android:title="@string/pref_hours_title"
+			android:summary="@string/pref_hours_summary" android:persistent="false"
+			android:dependency="Enabled"></net.assemble.timetone.TimetoneHoursPreference>
+		<net.assemble.timetone.TimetoneVolumePreference
+			android:summary="@string/pref_volume_summary" android:title="@string/pref_volume_title"
+			android:key="Volume" android:defaultValue="3" android:dependency="Enabled"></net.assemble.timetone.TimetoneVolumePreference>
+		<CheckBoxPreference android:key="Vibrate"
+			android:summary="@string/pref_vibrate_summary" android:title="@string/pref_vibrate_title"
+			android:defaultValue="false" android:dependency="Enabled"></CheckBoxPreference>
+		<CheckBoxPreference android:summary="@string/pref_notificationicon_summary"
+			android:title="@string/pref_notificationicon_title" android:key="NotificationIcon"
+			android:defaultValue="false" android:dependency="Enabled"></CheckBoxPreference>
+		<Preference android:title="@string/testplay" android:key="Test"
+			android:dependency="Enabled"></Preference>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/about">
+		<Preference android:title="@string/about" android:key="About"></Preference>
+	</PreferenceCategory>
+</PreferenceScreen>

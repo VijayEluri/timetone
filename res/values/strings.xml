@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TimeTone</string>
+    <string name="app_version">1.3</string>
+	<string name="app_description" />
+	<string name="testplay">Test tone</string>
+	<string name="preferences">Preferences</string>
+	<string name="about">About TimeTone</string>
+	<string name="button_min_ems">8</string>
+	<string name="pref_title">Configuration</string>
+	<string name="pref_enable_title">Enable</string>
+	<string name="pref_enable_summary">Enable time tone.</string>
+	<string name="pref_vibrate_title">Vibrate</string>
+	<string name="pref_vibrate_summary">Notify with vibration.</string>
+	<string name="pref_period_title">Tone period</string>
+	<string name="pref_period_summary">Tone interval</string>
+	<string name="pref_hours_title">Hours</string>
+	<string name="pref_hours_summary">Specify tone time.</string>
+	<string name="pref_hours_suffix">&#x00a0;o&#8216;clock</string>
+	<string name="pref_volume_title">Volume</string>
+	<string name="pref_volume_summary">Specify tone volume</string>
+    <string name="pref_volume_useringvolume">Use ring volume</string>
+	<string name="pref_notificationicon_title">Show Notification Icon</string>
+	<string name="pref_notificationicon_summary">Show icon on notification bar.</string>
+	<string name="period_eachhour">every hour</string>
+	<string name="period_each30min">every 30 min.</string>
+	<string name="about_title">TimeTone</string>
+	<string name="about_text">Copyright 2010 Y.Hirose\n</string>
+</resources>
