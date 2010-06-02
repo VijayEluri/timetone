@@ -1,13 +1,15 @@
 package net.assemble.timetone;
 
 import android.app.Activity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.view.Window;
 
 import net.assemble.timetone.R;
 
 /**
- * 「柚子時計について」画面
+ * 「時報について」画面
  */
 public class TimetoneAboutActivity extends Activity
 {
@@ -19,8 +21,10 @@ public class TimetoneAboutActivity extends Activity
 
         setContentView(R.layout.about_activity);
 
-        setTitle(getResources().getString(R.string.app_name) + " "
-        		+ getResources().getString(R.string.app_version));
+        try {
+            PackageInfo pi = getPackageManager().getPackageInfo("net.assemble.timetone", 0);
+            setTitle(getResources().getString(R.string.app_name) + " ver." + pi.versionName);
+        } catch (NameNotFoundException e) {}
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
                 R.drawable.icon);
     }
