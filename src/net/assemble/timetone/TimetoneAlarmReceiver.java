@@ -30,13 +30,13 @@ public class TimetoneAlarmReceiver extends BroadcastReceiver
                 // Restore alarm
                 Log.i(this.getClass().getName(), "Timetone restarted.");
                 //new TimetonePlay(ctx).setAlarm();
-            	TimetoneService.startService(ctx);
+                TimetoneService.startService(ctx);
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)
                     || intent.getAction()
                             .equals(Intent.ACTION_TIMEZONE_CHANGED)) {
                 // Restart alarm
                 //new TimetonePlay(ctx).setAlarm();
-            	TimetoneService.startService(ctx);
+                TimetoneService.startService(ctx);
             }
             return;
         }
@@ -44,8 +44,8 @@ public class TimetoneAlarmReceiver extends BroadcastReceiver
         if (Calendar.getInstance().get(Calendar.MINUTE) % 30 == 0) {
             TelephonyManager tel = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
             if (tel.getCallState() == TelephonyManager.CALL_STATE_OFFHOOK) {
-            	// 通話中は抑止
-            	return;
+                // 通話中は抑止
+                return;
             }
             new TimetonePlay(ctx).play();
         }

@@ -40,7 +40,7 @@ public class TimetonePreferencesActivity extends PreferenceActivity
         if (preference == mPeriodPref) {
         } else if (preference == mTestPref) {
             new TimetonePlay(getApplicationContext()).playTest();
-       	} else if (preference == mAboutPref) {
+        } else if (preference == mAboutPref) {
             //Toast.makeText(this, "Thanks!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent().setClass(this, TimetoneAboutActivity.class);
             startActivity(intent);
@@ -95,10 +95,10 @@ public class TimetonePreferencesActivity extends PreferenceActivity
     private void updateService() {
         if (TimetonePreferences.getEnabled(this)) {
             //new TimetonePlay(this).setAlarm();
-        	TimetoneService.startService(this);
+            TimetoneService.startService(this);
         } else {
             //new TimetonePlay(this).resetAlarm();
-        	TimetoneService.stopService(this);
+            TimetoneService.stopService(this);
         }
     }
 

@@ -12,7 +12,7 @@ import android.util.Log;
  */
 public class TimetoneService extends Service {
     private static ComponentName mService;
-	private TimetonePlay mPlay;
+    private TimetonePlay mPlay;
 
     @Override
     public void onCreate() {
@@ -42,9 +42,9 @@ public class TimetoneService extends Service {
     public static void startService(Context ctx) {
         mService = ctx.startService(new Intent(ctx, TimetoneService.class));
         if (mService == null) {
-	        Log.e(ctx.getClass().getName(), "TimetoneService could not start!");
-	    } else {
-	        Log.d(ctx.getClass().getName(), "TimetoneService started: " + mService);
+            Log.e(ctx.getClass().getName(), "TimetoneService could not start!");
+        } else {
+            Log.d(ctx.getClass().getName(), "TimetoneService started: " + mService);
         }
     }
 
@@ -53,15 +53,15 @@ public class TimetoneService extends Service {
      */
     public static void stopService(Context ctx) {
         if (mService != null) {
-	        Intent i = new Intent();
-	        i.setComponent(mService);
-	        boolean res = ctx.stopService(i);
-	        if (res == false) {
-		        Log.e(ctx.getClass().getName(), "TimetoneService could not stop!");
-	        } else {
-		        Log.d(ctx.getClass().getName(), "TimetoneService stopped: " + mService);
-	        	mService = null;
-	        }
+            Intent i = new Intent();
+            i.setComponent(mService);
+            boolean res = ctx.stopService(i);
+            if (res == false) {
+                Log.e(ctx.getClass().getName(), "TimetoneService could not stop!");
+            } else {
+                Log.d(ctx.getClass().getName(), "TimetoneService stopped: " + mService);
+                mService = null;
+            }
         }
     }
 }

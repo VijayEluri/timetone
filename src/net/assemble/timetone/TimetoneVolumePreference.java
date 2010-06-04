@@ -15,7 +15,7 @@ import net.assemble.timetone.R;
  *
  */
 public class TimetoneVolumePreference extends DialogPreference {
-	private CheckBox mCheckBox;
+    private CheckBox mCheckBox;
     private SeekBar mSeekBar;
 
     private int mMaxVolume;
@@ -48,18 +48,18 @@ public class TimetoneVolumePreference extends DialogPreference {
 
         mCheckBox = (CheckBox) view.findViewById(R.id.useringvolume);
         if (mUseRingVolume != false) {
-        	mCheckBox.setChecked(true);
-        	mSeekBar.setEnabled(false);
+            mCheckBox.setChecked(true);
+            mSeekBar.setEnabled(false);
         }
 
         mCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            	if (mCheckBox.isChecked()) {
-                	mSeekBar.setEnabled(false);
-            	} else {
-            		mSeekBar.setEnabled(true);
-            	}
+                if (mCheckBox.isChecked()) {
+                    mSeekBar.setEnabled(false);
+                } else {
+                    mSeekBar.setEnabled(true);
+                }
             }
         });
     }
@@ -69,7 +69,7 @@ public class TimetoneVolumePreference extends DialogPreference {
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
-        	mUseRingVolume = mCheckBox.isChecked();
+            mUseRingVolume = mCheckBox.isChecked();
             mVolume = mSeekBar.getProgress();
             //Log.d("debug", "use ring volume = " + mUseRingVolume);
             //Log.d("debug", "new volume = " + mVolume);

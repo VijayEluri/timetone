@@ -65,11 +65,11 @@ public class TimetonePlay {
         AudioManager audio = (AudioManager) mCtx.getSystemService(Context.AUDIO_SERVICE);
         int vol;
         if (TimetonePreferences.getUseRingVolume(mCtx) != false) {
-        	// 着信音量を使用
+            // 着信音量を使用
             vol = audio.getStreamVolume(AudioManager.STREAM_RING);
         } else {
-        	// 設定値を使用
-        	vol = TimetonePreferences.getVolume(mCtx);
+            // 設定値を使用
+            vol = TimetonePreferences.getVolume(mCtx);
         }
         mp.setVolume(vol, vol);
         g_Mp = mp;
