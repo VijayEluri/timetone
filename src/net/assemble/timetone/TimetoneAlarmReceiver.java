@@ -18,7 +18,7 @@ public class TimetoneAlarmReceiver extends BroadcastReceiver
 {
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        Log.d(this.getClass().getName(), "received intent: "
+        Log.d(getClass().getName(), "received intent: "
                 + intent.getAction());
 
         if (TimetonePreferences.getEnabled(ctx) == false) {
@@ -28,7 +28,7 @@ public class TimetoneAlarmReceiver extends BroadcastReceiver
         if (intent.getAction() != null) {
             if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
                 // Restore alarm
-                Log.i(this.getClass().getName(), "Timetone restarted.");
+                Log.i(getClass().getName(), "Timetone restarted.");
                 //new TimetonePlay(ctx).setAlarm();
                 TimetoneService.startService(ctx);
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)

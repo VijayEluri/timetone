@@ -57,7 +57,7 @@ public class TimetonePlay {
         // 生成
         MediaPlayer mp = MediaPlayer.create(mCtx, resid);
         if (mp == null) {
-            Log.e(this.getClass().getName(), "Failed to create MediaPlayer!");
+            Log.e(getClass().getName(), "Failed to create MediaPlayer!");
             return null;
         }
 
@@ -189,7 +189,7 @@ public class TimetonePlay {
         next -= (next % 1000);
         mAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, next, interval,
                 pendingIntent());
-        Log.d(this.getClass().getName(), "set alarm: "
+        Log.d(getClass().getName(), "set alarm: "
                 + DateFormat.getDateTimeInstance().format(cal.getTime())
                 + " (msec=" + next + ", interval=" + interval + ")");
     }
@@ -230,7 +230,7 @@ public class TimetonePlay {
      */
     public void resetAlarm() {
         mAlarmManager.cancel(pendingIntent());
-        Log.d(this.getClass().getName(), "alarm canceled.");
+        Log.d(getClass().getName(), "alarm canceled.");
         clearNotification();
     }
 
