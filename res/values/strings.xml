@@ -24,5 +24,5 @@
     <string name="period_eachhour">every hour</string>
     <string name="period_each30min">every 30 min.</string>
     <string name="about_title">TimeTone</string>
-    <string name="about_text">Copyright 2010 Y.Hirose\n</string>
+    <string name="about_text"><![CDATA[Copyright 2010 Orange leaf\n]]></string>
 </resources>
