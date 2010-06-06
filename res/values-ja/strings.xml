@@ -3,7 +3,7 @@
     <string name="app_name">時報</string>
     <string name="app_description">時報をお知らせします！</string>
     <string name="testplay">テスト</string>
-    <string name="about">時報について</string>
+    <string name="about">バージョン情報</string>
     <string name="pref_title">設定</string>
     <string name="pref_enable_title">有効</string>
     <string name="pref_enable_summary">時報を有効にします。</string>
