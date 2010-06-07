@@ -8,7 +8,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 /**
- * サービス ※未使用
+ * サービス
  */
 public class TimetoneService extends Service {
     private static ComponentName mService;
