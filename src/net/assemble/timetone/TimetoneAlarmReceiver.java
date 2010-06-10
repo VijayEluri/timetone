@@ -16,10 +16,11 @@ import net.assemble.timetone.TimetonePlay;
  */
 public class TimetoneAlarmReceiver extends BroadcastReceiver
 {
+    private static final String TAG = "Timetone";
+
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        Log.d(getClass().getName(), "received intent: "
-                + intent.getAction());
+        Log.d(TAG, "received intent: " + intent.getAction());
 
         if (TimetonePreferences.getEnabled(ctx) == false) {
             return;
@@ -28,7 +29,7 @@ public class TimetoneAlarmReceiver extends BroadcastReceiver
         if (intent.getAction() != null) {
             if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
                 // Restore alarm
-                Log.i(getClass().getName(), "Timetone restarted.");
+                Log.i(TAG, "Timetone restarted.");
                 //new TimetonePlay(ctx).setAlarm();
                 TimetoneService.startService(ctx);
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)

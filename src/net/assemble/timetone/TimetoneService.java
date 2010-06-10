@@ -11,6 +11,8 @@ import android.util.Log;
  * サービス
  */
 public class TimetoneService extends Service {
+    private static final String TAG = "TimetoneService";
+
     private static ComponentName mService;
     private TimetonePlay mPlay;
 
@@ -42,9 +44,9 @@ public class TimetoneService extends Service {
     public static void startService(Context ctx) {
         mService = ctx.startService(new Intent(ctx, TimetoneService.class));
         if (mService == null) {
-            Log.e(ctx.getClass().getName(), "TimetoneService could not start!");
+            Log.e(TAG, "TimetoneService could not start!");
         } else {
-            Log.d(ctx.getClass().getName(), "TimetoneService started: " + mService);
+            Log.d(TAG, "TimetoneService started: " + mService);
         }
     }
 
@@ -57,9 +59,9 @@ public class TimetoneService extends Service {
             i.setComponent(mService);
             boolean res = ctx.stopService(i);
             if (res == false) {
-                Log.e(ctx.getClass().getName(), "TimetoneService could not stop!");
+                Log.e(TAG, "TimetoneService could not stop!");
             } else {
-                Log.d(ctx.getClass().getName(), "TimetoneService stopped: " + mService);
+                Log.d(TAG, "TimetoneService stopped: " + mService);
                 mService = null;
             }
         }
