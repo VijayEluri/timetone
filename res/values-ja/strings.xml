@@ -22,5 +22,5 @@
     <string name="period_eachhour">1時間ごと</string>
     <string name="period_each30min">30分ごと</string>
     <string name="about_title">時報</string>
-    <string name="about_text"><![CDATA[時報をお知らせします！\n\nCopyright 2010 Orange leaf\n]]></string>
+    <string name="report">報告</string>
 </resources>
