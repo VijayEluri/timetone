@@ -30,13 +30,11 @@ public class TimetoneAlarmReceiver extends BroadcastReceiver
             if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
                 // Restore alarm
                 Log.i(TAG, "Timetone restarted.");
-                //new TimetonePlay(ctx).setAlarm();
                 TimetoneService.startService(ctx);
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)
                     || intent.getAction()
                             .equals(Intent.ACTION_TIMEZONE_CHANGED)) {
                 // Restart alarm
-                //new TimetonePlay(ctx).setAlarm();
                 TimetoneService.startService(ctx);
             }
             return;

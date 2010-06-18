@@ -94,10 +94,8 @@ public class TimetonePreferencesActivity extends PreferenceActivity
      */
     private void updateService() {
         if (TimetonePreferences.getEnabled(this)) {
-            //new TimetonePlay(this).setAlarm();
             TimetoneService.startService(this);
         } else {
-            //new TimetonePlay(this).resetAlarm();
             TimetoneService.stopService(this);
         }
     }
