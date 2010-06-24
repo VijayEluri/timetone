@@ -42,7 +42,7 @@ public class TimetonePreferencesActivity extends PreferenceActivity
             new TimetonePlay(getApplicationContext()).playTest();
         } else if (preference == mAboutPref) {
             //Toast.makeText(this, "Thanks!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent().setClass(this, TimetoneAboutActivity.class);
+            Intent intent = new Intent().setClass(this, AboutActivity.class);
             startActivity(intent);
 
 //          AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
