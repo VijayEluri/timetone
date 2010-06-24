@@ -23,7 +23,6 @@
     <string name="pref_notificationicon_summary">Show icon on notification bar.</string>
     <string name="period_eachhour">every hour</string>
     <string name="period_each30min">every 30 min.</string>
-    <string name="about_title">TimeTone</string>
     <string name="report">Report</string>
     <string name="ok">OK</string>
 </resources>
