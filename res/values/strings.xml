@@ -2,9 +2,12 @@
 <resources>
     <string name="app_name">TimeTone</string>
     <string name="app_description" />
+    <string name="ok">OK</string>
     <string name="testplay">Test tone</string>
     <string name="preferences">Preferences</string>
     <string name="about">About</string>
+    <string name="feedback">Feedback</string>
+    <string name="feedback_to">yh1224%2Borange@gmail.com</string>
     <string name="button_min_ems">8</string>
     <string name="pref_title">Configuration</string>
     <string name="pref_enable_title">Enable</string>
@@ -23,6 +26,4 @@
     <string name="pref_notificationicon_summary">Show icon on notification bar.</string>
     <string name="period_eachhour">every hour</string>
     <string name="period_each30min">every 30 min.</string>
-    <string name="report">Report</string>
-    <string name="ok">OK</string>
 </resources>

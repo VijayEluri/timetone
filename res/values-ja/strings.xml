@@ -5,6 +5,7 @@
     <string name="testplay">テスト</string>
     <string name="preferences">設定</string>
     <string name="about">バージョン情報</string>
+    <string name="feedback">報告</string>
     <string name="pref_title">設定</string>
     <string name="pref_enable_title">有効</string>
     <string name="pref_enable_summary">時報を有効にします。</string>
@@ -22,5 +23,4 @@
     <string name="pref_notificationicon_summary">通知バーにアイコンを表示します。</string>
     <string name="period_eachhour">1時間ごと</string>
     <string name="period_each30min">30分ごと</string>
-    <string name="report">報告</string>
 </resources>
