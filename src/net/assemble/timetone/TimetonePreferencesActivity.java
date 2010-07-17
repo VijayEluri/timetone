@@ -8,7 +8,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 
-import net.assemble.timetone.R;
+import net.assemble.android.AboutActivity;
 
 /**
  * 設定画面

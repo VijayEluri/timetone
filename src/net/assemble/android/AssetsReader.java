@@ -1,4 +1,4 @@
-package net.assemble.timetone;
+package net.assemble.android;
 
 import java.io.BufferedReader;
 import java.io.IOException;
