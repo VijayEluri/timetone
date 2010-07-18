@@ -3,6 +3,8 @@
     <string name="app_name">TimeTone</string>
     <string name="app_description" />
     <string name="ok">OK</string>
+    <string name="service_started">TimeTone started.</string>
+    <string name="service_stopped">TimeTone stopped.</string>
     <string name="testplay">Test tone</string>
     <string name="preferences">Preferences</string>
     <string name="about">About</string>

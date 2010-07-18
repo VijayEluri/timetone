@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * サービス
@@ -39,15 +40,34 @@ public class TimetoneService extends Service {
 
 
     /**
+     * サービス動作有無取得
+     */
+    public static boolean isActive() {
+        if (mService != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * サービス開始
      */
-    public static void startService(Context ctx) {
+    public static boolean startService(Context ctx) {
+        boolean result;
+        boolean restart = isActive();
         mService = ctx.startService(new Intent(ctx, TimetoneService.class));
         if (mService == null) {
             Log.e(TAG, "TimetoneService could not start!");
+            result = false;
         } else {
             Log.d(TAG, "TimetoneService started: " + mService);
+            result = true;
         }
+        if (!restart && result) {
+            Toast.makeText(ctx, R.string.service_started, Toast.LENGTH_SHORT).show();
+        }
+        return result;
     }
 
     /**
@@ -62,6 +82,7 @@ public class TimetoneService extends Service {
                 Log.e(TAG, "TimetoneService could not stop!");
             } else {
                 Log.d(TAG, "TimetoneService stopped: " + mService);
+                Toast.makeText(ctx, R.string.service_stopped, Toast.LENGTH_SHORT).show();
                 mService = null;
             }
         }
