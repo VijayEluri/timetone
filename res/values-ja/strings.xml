@@ -8,6 +8,7 @@
     <string name="preferences">設定</string>
     <string name="about">バージョン情報</string>
     <string name="feedback">報告</string>
+    <string name="media_volume_zero">メディア再生音量が無音に設定されているため、時報は鳴りません。</string>
     <string name="pref_title">設定</string>
     <string name="pref_enable_title">有効</string>
     <string name="pref_enable_summary">時報を有効にします。</string>

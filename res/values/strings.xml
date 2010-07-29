@@ -11,6 +11,7 @@
     <string name="feedback">Feedback</string>
     <string name="feedback_to">yh1224%2Borange@gmail.com</string>
     <string name="button_min_ems">8</string>
+    <string name="media_volume_zero">Please increase Media volume to play tone.</string>
     <string name="pref_title">Configuration</string>
     <string name="pref_enable_title">Enable</string>
     <string name="pref_enable_summary">Enable time tone.</string>
