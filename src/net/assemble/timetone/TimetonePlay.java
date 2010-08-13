@@ -161,7 +161,7 @@ public class TimetonePlay {
         Intent intent = new Intent(mCtx, TimetonePreferencesActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(mCtx, 0, intent, 0);
         notification.setLatestEventInfo(mCtx, mCtx.getResources().getString(R.string.app_name), mCtx.getResources().getString(R.string.app_description), contentIntent);
-        notification.flags |= Notification.FLAG_NO_CLEAR;
+        notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
         notificationManager.notify(NOTIFICATIONID_ICON, notification);
         g_Icon = true;
     }
