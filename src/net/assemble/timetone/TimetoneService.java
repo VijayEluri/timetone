@@ -12,7 +12,7 @@ import android.widget.Toast;
  * サービス
  */
 public class TimetoneService extends Service {
-    private static final String TAG = "TimetoneService";
+    private static final String TAG = "Timetone";
 
     private static ComponentName mService;
     private TimetonePlay mPlay;
@@ -21,6 +21,7 @@ public class TimetoneService extends Service {
     public void onCreate() {
         super.onCreate();
         mPlay = new TimetonePlay(this);
+        mPlay.setAlarm();
     }
 
     @Override
