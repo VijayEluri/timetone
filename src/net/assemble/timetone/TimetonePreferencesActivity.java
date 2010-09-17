@@ -102,6 +102,17 @@ public class TimetonePreferencesActivity extends PreferenceActivity
      * 設定に応じて処理をおこなう
      */
     private void updateService() {
+        // ライセンスフラグ設定
+        //  有料版を使ったことがある場合は購入メニューを表示させない
+        if (!Timetone.FREE_VERSION) {
+            TimetonePreferences.setLicensed(this, true);
+        }
+
+        // 有効期限チェック
+        if (!Timetone.checkExpiration(this)) {
+            TimetonePreferences.setEnabled(this, false);
+        }
+
         if (TimetonePreferences.getEnabled(this)) {
             TimetoneService.startService(this);
         } else {

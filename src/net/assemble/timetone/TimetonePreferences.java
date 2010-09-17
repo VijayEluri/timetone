@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 
 /**
@@ -11,6 +12,9 @@ import android.preference.PreferenceManager;
  */
 public class TimetonePreferences
 {
+    public static final String PREF_KEY_LICENSED = "licensed";
+    public static final boolean PREF_LICENSED_DEFAULT = false;
+
     public static final String PREF_KEY_ENABLE = "Enabled";
 
     public static final String PREF_KEY_PERIOD = "Period";
@@ -41,10 +45,28 @@ public class TimetonePreferences
 
     SharedPreferences mPref;
 
+    public static boolean getLicensed(Context ctx) {
+        return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
+                TimetonePreferences.PREF_KEY_LICENSED,
+                TimetonePreferences.PREF_LICENSED_DEFAULT);
+    }
+
+    public static void setLicensed(Context ctx, boolean val) {
+        Editor e = PreferenceManager.getDefaultSharedPreferences(ctx).edit();
+        e.putBoolean(TimetonePreferences.PREF_KEY_LICENSED, val);
+        e.commit();
+    }
+
     public static boolean getEnabled(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
                 TimetonePreferences.PREF_KEY_ENABLE,
                 TimetonePreferences.PREF_ENABLE_DEFAULT);
+    }
+
+    public static void setEnabled(Context ctx, boolean val) {
+        Editor e = PreferenceManager.getDefaultSharedPreferences(ctx).edit();
+        e.putBoolean(TimetonePreferences.PREF_KEY_ENABLE, val);
+        e.commit();
     }
 
     public static boolean getVibrate(Context ctx) {

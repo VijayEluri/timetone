@@ -7,8 +7,6 @@ import android.content.BroadcastReceiver;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import net.assemble.timetone.TimetonePlay;
-
 /**
  * Receiver for Broadcast Intent
  *
@@ -23,6 +21,12 @@ public class TimetoneAlarmReceiver extends BroadcastReceiver
         Log.d(TAG, "received intent: " + intent.getAction());
 
         if (TimetonePreferences.getEnabled(ctx) == false) {
+            return;
+        }
+
+        // 有効期限チェック
+        if (!Timetone.checkExpiration(ctx)) {
+            TimetonePreferences.setEnabled(ctx, false);
             return;
         }
 

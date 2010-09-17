@@ -7,8 +7,6 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -21,10 +19,8 @@ import net.assemble.timetone.R;
  */
 public class TimetonePlay {
     private static final String TAG = "Timetone";
-    private static final int NOTIFICATIONID_ICON = 1;
 
     public static MediaPlayer g_Mp; // 再生中のMediaPlayer
-    public static boolean g_Icon;       // 通知バーアイコン状態
 
     private AlarmManager mAlarmManager;
     private Context mCtx;
@@ -150,35 +146,6 @@ public class TimetonePlay {
     }
 
     /**
-     * ノーティフィケーションバーにアイコンを表示
-     */
-    private void showNotification() {
-        if (g_Icon != false) {
-            return;
-        }
-        NotificationManager notificationManager = (NotificationManager)mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notification = new Notification(R.drawable.icon, mCtx.getResources().getString(R.string.app_name), System.currentTimeMillis());
-        Intent intent = new Intent(mCtx, TimetonePreferencesActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(mCtx, 0, intent, 0);
-        notification.setLatestEventInfo(mCtx, mCtx.getResources().getString(R.string.app_name), mCtx.getResources().getString(R.string.app_description), contentIntent);
-        notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
-        notificationManager.notify(NOTIFICATIONID_ICON, notification);
-        g_Icon = true;
-    }
-
-    /**
-     * ノーティフィケーションバーのアイコンを消去
-     */
-    private void clearNotification() {
-        if (g_Icon == false) {
-            return;
-        }
-        NotificationManager notificationManager = (NotificationManager)mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(NOTIFICATIONID_ICON);
-        g_Icon = false;
-    }
-
-    /**
      * タイマ設定
      *
      * @param cal
@@ -220,9 +187,9 @@ public class TimetonePlay {
         setAlarm(cal, interval);
 
         if (TimetonePreferences.getNotificationIcon(mCtx)) {
-            showNotification();
+            TimetoneNotification.showNotification(mCtx);
         } else {
-            clearNotification();
+            TimetoneNotification.clearNotification(mCtx);
         }
     }
 
@@ -232,7 +199,7 @@ public class TimetonePlay {
     public void resetAlarm() {
         mAlarmManager.cancel(pendingIntent());
         Log.d(TAG, "alarm canceled.");
-        clearNotification();
+        TimetoneNotification.clearNotification(mCtx);
     }
 
     /**
