@@ -12,78 +12,77 @@ import android.preference.PreferenceManager;
  */
 public class TimetonePreferences
 {
-    public static final String PREF_KEY_LICENSED = "licensed";
+    public static final String PREF_LICENSED_KEY = "licensed";
     public static final boolean PREF_LICENSED_DEFAULT = false;
 
-    public static final String PREF_KEY_ENABLE = "Enabled";
+    public static final String PREF_ENABLED_KEY = "Enabled";
+    public static final boolean PREF_ENABLED_DEFAULT = true;
 
-    public static final String PREF_KEY_PERIOD = "Period";
-    public static final boolean PREF_ENABLE_DEFAULT = true;
-
-    public static final String PREF_KEY_VIBRATE = "Vibrate";
-    public static final boolean PREF_VIBRATE_DEFAULT = true;
-
+    public static final String PREF_PERIOD_KEY = "Period";
     public static final String PREF_PERIOD_DEFAULT = "0";
     public static final String PREF_PERIOD_EACHHOUR = "0";
     public static final String PREF_PERIOD_EACH30MIN = "1";
 
-    public static final String PREF_KEY_HOURS = "Hours";
+    public static final String PREF_VIBRATE_KEY = "Vibrate";
+    public static final boolean PREF_VIBRATE_DEFAULT = true;
+
+    public static final String PREF_HOURS_KEY = "Hours";
     public static final int PREF_HOURS_DEFAULT = 0x00ffffff;
 
-    public static final String PREF_KEY_USERINGVOLUME = "UseRingVolume";
-    public static final boolean PREF_USERINGVOLUME_DEFAULT = false;
+    public static final String PREF_USE_RINGVOLUME_KEY = "UseRingVolume";
+    public static final boolean PREF_USE_RINGVOLUME_DEFAULT = false;
 
-    public static final String PREF_KEY_VOLUME = "Volume";
+    public static final String PREF_VOLUME_KEY = "Volume";
     public static final int PREF_VOLUME_DEFAULT = 3;
 
-    public static final String PREF_KEY_NOTIFICATIONICON = "NotificationIcon";
-    public static final boolean PREF_NOTIFICATIONICON_DEFAULT = false;
+    public static final String PREF_NOTIFICATION_ICON_KEY = "NotificationIcon";
+    public static final boolean PREF_NOTIFICATION_ICON_DEFAULT = false;
 
-    public static final String PREF_KEY_TEST = "Test";
+    public static final String PREF_TEST_KEY = "Test";
 
-    public static final String PREF_KEY_ABOUT = "About";
+    public static final String PREF_ABOUT_KEY = "About";
 
     SharedPreferences mPref;
 
     public static boolean getLicensed(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                TimetonePreferences.PREF_KEY_LICENSED,
+                TimetonePreferences.PREF_LICENSED_KEY,
                 TimetonePreferences.PREF_LICENSED_DEFAULT);
     }
 
     public static void setLicensed(Context ctx, boolean val) {
         Editor e = PreferenceManager.getDefaultSharedPreferences(ctx).edit();
-        e.putBoolean(TimetonePreferences.PREF_KEY_LICENSED, val);
+        e.putBoolean(TimetonePreferences.PREF_LICENSED_KEY, val);
         e.commit();
     }
 
     public static boolean getEnabled(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                TimetonePreferences.PREF_KEY_ENABLE,
-                TimetonePreferences.PREF_ENABLE_DEFAULT);
+                TimetonePreferences.PREF_ENABLED_KEY,
+                TimetonePreferences.PREF_ENABLED_DEFAULT);
     }
 
     public static void setEnabled(Context ctx, boolean val) {
         Editor e = PreferenceManager.getDefaultSharedPreferences(ctx).edit();
-        e.putBoolean(TimetonePreferences.PREF_KEY_ENABLE, val);
+        e.putBoolean(TimetonePreferences.PREF_ENABLED_KEY, val);
         e.commit();
     }
 
     public static boolean getVibrate(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                TimetonePreferences.PREF_KEY_VIBRATE,
+                TimetonePreferences.PREF_VIBRATE_KEY,
                 TimetonePreferences.PREF_VIBRATE_DEFAULT);
     }
 
     public static String getPeriod(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getString(
-                TimetonePreferences.PREF_KEY_PERIOD,
+                TimetonePreferences.PREF_PERIOD_KEY,
                 TimetonePreferences.PREF_PERIOD_DEFAULT);
     }
 
     public static int getHours(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getInt(
-                TimetonePreferences.PREF_KEY_HOURS,
+                TimetonePreferences.PREF_HOURS_KEY,
                 TimetonePreferences.PREF_HOURS_DEFAULT);
     }
 
@@ -94,20 +93,20 @@ public class TimetonePreferences
 
     public static boolean getUseRingVolume(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                TimetonePreferences.PREF_KEY_USERINGVOLUME,
-                TimetonePreferences.PREF_USERINGVOLUME_DEFAULT);
+                TimetonePreferences.PREF_USE_RINGVOLUME_KEY,
+                TimetonePreferences.PREF_USE_RINGVOLUME_DEFAULT);
     }
 
     public static int getVolume(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getInt(
-                TimetonePreferences.PREF_KEY_VOLUME,
+                TimetonePreferences.PREF_VOLUME_KEY,
                 TimetonePreferences.PREF_VOLUME_DEFAULT);
     }
 
     public static boolean getNotificationIcon(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
-                TimetonePreferences.PREF_KEY_NOTIFICATIONICON,
-                TimetonePreferences.PREF_NOTIFICATIONICON_DEFAULT);
+                TimetonePreferences.PREF_NOTIFICATION_ICON_KEY,
+                TimetonePreferences.PREF_NOTIFICATION_ICON_DEFAULT);
     }
 
     /*

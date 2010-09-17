@@ -44,7 +44,7 @@ public class TimetoneHoursPreference extends ListPreference
             mHours.set(mNewHours);
             mPref = getSharedPreferences();
             Editor e = mPref.edit();
-            e.putInt(TimetonePreferences.PREF_KEY_HOURS, mHours.getCoded());
+            e.putInt(TimetonePreferences.PREF_HOURS_KEY, mHours.getCoded());
             e.commit();
         }
     }
@@ -52,7 +52,7 @@ public class TimetoneHoursPreference extends ListPreference
     @Override
     protected void onPrepareDialogBuilder(Builder builder) {
         mPref = getSharedPreferences();
-        int hours = mPref.getInt(TimetonePreferences.PREF_KEY_HOURS, TimetonePreferences.PREF_HOURS_DEFAULT);
+        int hours = mPref.getInt(TimetonePreferences.PREF_HOURS_KEY, TimetonePreferences.PREF_HOURS_DEFAULT);
         Hours eh = new Hours(hours);
         setHours(eh);
 

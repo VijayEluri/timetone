@@ -30,9 +30,9 @@ public class TimetonePreferencesActivity extends PreferenceActivity
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.preferences);
 
-        mPeriodPref = (ListPreference)findPreference(TimetonePreferences.PREF_KEY_PERIOD);
-        mTestPref = (Preference)findPreference(TimetonePreferences.PREF_KEY_TEST);
-        mAboutPref = (Preference)findPreference(TimetonePreferences.PREF_KEY_ABOUT);
+        mPeriodPref = (ListPreference)findPreference(TimetonePreferences.PREF_PERIOD_KEY);
+        mTestPref = (Preference)findPreference(TimetonePreferences.PREF_TEST_KEY);
+        mAboutPref = (Preference)findPreference(TimetonePreferences.PREF_ABOUT_KEY);
 
         updateSummary();
     }

@@ -75,8 +75,8 @@ public class TimetoneVolumePreference extends DialogPreference {
             //Log.d("debug", "new volume = " + mVolume);
 
             Editor e = getSharedPreferences().edit();
-            e.putBoolean(TimetonePreferences.PREF_KEY_USERINGVOLUME, mUseRingVolume);
-            e.putInt(TimetonePreferences.PREF_KEY_VOLUME, mVolume);
+            e.putBoolean(TimetonePreferences.PREF_USE_RINGVOLUME_KEY, mUseRingVolume);
+            e.putInt(TimetonePreferences.PREF_VOLUME_KEY, mVolume);
             e.commit();
         }
     }
