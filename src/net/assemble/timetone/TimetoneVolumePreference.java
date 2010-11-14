@@ -43,8 +43,8 @@ public class TimetoneVolumePreference extends DialogPreference {
         super.onBindDialogView(view);
 
         mSeekBar = (SeekBar) view.findViewById(R.id.seekbar);
-        mSeekBar.setProgress(mVolume);
         mSeekBar.setMax(mMaxVolume);
+        mSeekBar.setProgress(mVolume);
 
         mCheckBox = (CheckBox) view.findViewById(R.id.useringvolume);
         if (mUseRingVolume != false) {
