@@ -24,7 +24,7 @@ public class TimetonePreferences
     public static final String PREF_PERIOD_EACH30MIN = "1";
 
     public static final String PREF_VIBRATE_KEY = "Vibrate";
-    public static final boolean PREF_VIBRATE_DEFAULT = true;
+    public static final boolean PREF_VIBRATE_DEFAULT = false;
 
     public static final String PREF_HOURS_KEY = "Hours";
     public static final int PREF_HOURS_DEFAULT = 0x00ffffff;
