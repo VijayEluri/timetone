@@ -4,6 +4,7 @@ import java.util.Calendar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.BroadcastReceiver;
+import android.net.Uri;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -32,12 +33,18 @@ public class TimetoneAlarmReceiver extends BroadcastReceiver
 
         if (intent.getAction() != null) {
             if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-                // Restore alarm
-                Log.i(TAG, "Timetone restarted.");
+                // Restart service
+                Log.i(TAG, "Timetone restarted. (at boot)");
                 TimetoneService.startService(ctx);
+            } else if (intent.getAction().equals("android.intent.action.PACKAGE_REPLACED"/*Intent.ACTION_PACKAGE_REPLACED*/)) {
+                if (intent.getData() != null &&
+                    intent.getData().equals(Uri.fromParts("package", ctx.getPackageName(), null))) {
+                    // Restart service
+                    Log.i(TAG, "Timetone restarted. (package replaced)");
+                    TimetoneService.startService(ctx);
+                }
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)
-                    || intent.getAction()
-                            .equals(Intent.ACTION_TIMEZONE_CHANGED)) {
+                    || intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)) {
                 // Restart alarm
                 TimetoneService.startService(ctx);
             }
