@@ -13,11 +13,9 @@ import android.util.Log;
  */
 public class TimetoneReceiver extends BroadcastReceiver
 {
-    private static final String TAG = "Timetone";
-
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        Log.d(TAG, "received intent: " + intent.getAction());
+        Log.d(Timetone.TAG, "received intent: " + intent.getAction());
 
         if (TimetonePreferences.getEnabled(ctx) == false) {
             return;
@@ -32,13 +30,13 @@ public class TimetoneReceiver extends BroadcastReceiver
         if (intent.getAction() != null) {
             if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
                 // Restart service
-                Log.i(TAG, "Timetone restarted. (at boot)");
+                Log.i(Timetone.TAG, "Timetone restarted. (at boot)");
                 TimetoneService.startService(ctx);
             } else if (intent.getAction().equals("android.intent.action.PACKAGE_REPLACED"/*Intent.ACTION_PACKAGE_REPLACED*/)) {
                 if (intent.getData() != null &&
                     intent.getData().equals(Uri.fromParts("package", ctx.getPackageName(), null))) {
                     // Restart service
-                    Log.i(TAG, "Timetone restarted. (package replaced)");
+                    Log.i(Timetone.TAG, "Timetone restarted. (package replaced)");
                     TimetoneService.startService(ctx);
                 }
             } else if (intent.getAction().equals(Intent.ACTION_TIME_CHANGED)

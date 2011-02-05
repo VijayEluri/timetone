@@ -12,8 +12,6 @@ import android.widget.Toast;
  * サービス
  */
 public class TimetoneService extends Service {
-    private static final String TAG = "Timetone";
-
     private static ComponentName mService;
     private TimetonePlay mPlay;
 
@@ -59,10 +57,10 @@ public class TimetoneService extends Service {
         boolean restart = isActive();
         mService = ctx.startService(new Intent(ctx, TimetoneService.class));
         if (mService == null) {
-            Log.e(TAG, "TimetoneService could not start!");
+            Log.e(Timetone.TAG, "TimetoneService could not start!");
             result = false;
         } else {
-            Log.d(TAG, "TimetoneService started: " + mService);
+            Log.d(Timetone.TAG, "TimetoneService started: " + mService);
             result = true;
         }
         if (!restart && result) {
@@ -80,9 +78,9 @@ public class TimetoneService extends Service {
             i.setComponent(mService);
             boolean res = ctx.stopService(i);
             if (res == false) {
-                Log.e(TAG, "TimetoneService could not stop!");
+                Log.e(Timetone.TAG, "TimetoneService could not stop!");
             } else {
-                Log.d(TAG, "TimetoneService stopped: " + mService);
+                Log.d(Timetone.TAG, "TimetoneService stopped: " + mService);
                 Toast.makeText(ctx, R.string.service_stopped, Toast.LENGTH_SHORT).show();
                 mService = null;
             }

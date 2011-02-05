@@ -8,7 +8,7 @@ import android.content.Context;
 import android.util.Log;
 
 public class Timetone {
-    private static final String TAG = "Timetone";
+    public static final String TAG = "Timetone";
 
     public static final boolean DEBUG = false;
     public static final boolean FREE_VERSION = false;
@@ -20,6 +20,7 @@ public class Timetone {
      * @param ctx Context
      * @return true:期限内 false:期限切れ
      */
+    @SuppressWarnings("unused")
     public static boolean checkExpiration(Context ctx) {
         if (FREE_VERSION && FREE_EXPIRES != null) {
             Date today = new Date();

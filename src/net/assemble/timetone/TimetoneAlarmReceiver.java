@@ -12,11 +12,9 @@ import android.util.Log;
  */
 public class TimetoneAlarmReceiver extends BroadcastReceiver
 {
-    private static final String TAG = "Timetone";
-
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        Log.d(TAG, "received intent: " + intent.getAction());
+        Log.d(Timetone.TAG, "received intent: " + intent.getAction());
 
         if (Calendar.getInstance().get(Calendar.MINUTE) % 30 == 0) {
             TelephonyManager tel = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
