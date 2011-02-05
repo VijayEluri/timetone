@@ -11,7 +11,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".TimetoneAlarmReceiver">
+        <receiver android:name=".TimetoneReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.TIME_SET" />
@@ -22,6 +22,7 @@
                 <data android:scheme="package"/> 
             </intent-filter>
         </receiver>
+        <receiver android:name=".TimetoneAlarmReceiver" />
         <activity android:name="net.assemble.android.AboutActivity"
             android:theme="@android:style/Theme.Dialog" />
         <service android:name="TimetoneService" />
