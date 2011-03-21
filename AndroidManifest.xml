@@ -5,7 +5,8 @@
     <application android:icon="@drawable/icon"
         android:label="@string/app_name">
         <activity android:label="@string/app_name"
-            android:name=".TimetonePreferencesActivity">
+            android:name=".TimetonePreferencesActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,7 +20,7 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <data android:scheme="package"/> 
+                <data android:scheme="package" />
             </intent-filter>
         </receiver>
         <receiver android:name=".TimetoneAlarmReceiver" />
