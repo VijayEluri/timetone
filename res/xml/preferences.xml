@@ -14,7 +14,7 @@
             android:persistent="false" android:dependency="Enabled" />
         <net.assemble.timetone.TimetoneVolumePreference
             android:summary="@string/pref_volume_summary" android:title="@string/pref_volume_title"
-            android:key="Volume" android:defaultValue="3"
+            android:key="Volume" android:defaultValue="4"
             android:dependency="Enabled" />
         <CheckBoxPreference android:key="Vibrate"
             android:summary="@string/pref_vibrate_summary"

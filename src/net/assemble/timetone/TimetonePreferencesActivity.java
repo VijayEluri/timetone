@@ -1,15 +1,12 @@
 package net.assemble.timetone;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.widget.Toast;
 
 import net.assemble.android.AboutActivity;
 
@@ -66,10 +63,10 @@ public class TimetonePreferencesActivity extends PreferenceActivity
     protected void onResume() {
         super.onResume();
 
-        AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        if (audio.getStreamVolume(AudioManager.STREAM_MUSIC) == 0) {
-            Toast.makeText(this, R.string.media_volume_zero, Toast.LENGTH_LONG).show();
-        }
+//        AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+//        if (audio.getStreamVolume(AudioManager.STREAM_MUSIC) == 0) {
+//            Toast.makeText(this, R.string.media_volume_zero, Toast.LENGTH_LONG).show();
+//        }
 
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }

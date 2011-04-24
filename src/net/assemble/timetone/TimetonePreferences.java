@@ -33,7 +33,7 @@ public class TimetonePreferences
     public static final boolean PREF_USE_RINGVOLUME_DEFAULT = false;
 
     public static final String PREF_VOLUME_KEY = "Volume";
-    public static final int PREF_VOLUME_DEFAULT = 3;
+    public static final int PREF_VOLUME_DEFAULT = 4;
 
     public static final String PREF_NOTIFICATION_ICON_KEY = "NotificationIcon";
     public static final boolean PREF_NOTIFICATION_ICON_DEFAULT = false;

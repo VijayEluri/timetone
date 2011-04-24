@@ -31,7 +31,7 @@ public class TimetoneVolumePreference extends DialogPreference {
 
         // 設定可能な最大値を取得
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        mMaxVolume =am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        mMaxVolume = am.getStreamMaxVolume(AudioManager.STREAM_ALARM);
 
         // 現在の設定値を取得
         mUseRingVolume = TimetonePreferences.getUseRingVolume(context);

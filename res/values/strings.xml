@@ -23,7 +23,7 @@
     <string name="pref_hours_summary">Specify tone time.</string>
     <string name="pref_hours_suffix">&#x00a0;o&#8216;clock</string>
     <string name="pref_volume_title">Volume</string>
-    <string name="pref_volume_summary">Adjust tone volume. Actual volume depends on Media volume.</string>
+    <string name="pref_volume_summary">Adjust tone volume.</string>
     <string name="pref_volume_useringvolume">Use ring volume</string>
     <string name="pref_notificationicon_title">Show Notification Icon</string>
     <string name="pref_notificationicon_summary">Show icon on notification bar.</string>
