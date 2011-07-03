@@ -132,6 +132,9 @@ public class TimetonePlay {
      * 時報テスト再生
      */
     public void playTest() {
+        if (g_Mp != null) {
+            return;
+        }
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MINUTE, 15);
         play(cal);
