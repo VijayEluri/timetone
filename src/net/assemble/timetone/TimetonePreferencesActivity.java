@@ -22,6 +22,7 @@ public class TimetonePreferencesActivity extends PreferenceActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        TimetonePreferences.upgrade(this);
         super.onCreate(savedInstanceState);
 
         // Load the preferences from an XML resource

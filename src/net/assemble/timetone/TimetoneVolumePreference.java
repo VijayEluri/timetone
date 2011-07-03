@@ -20,7 +20,7 @@ public class TimetoneVolumePreference extends DialogPreference {
 
     private int mMaxVolume;
     private int mVolume;
-    private boolean mUseRingVolume;
+    private boolean mSilent;
 
     public TimetoneVolumePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -34,7 +34,7 @@ public class TimetoneVolumePreference extends DialogPreference {
         mMaxVolume = am.getStreamMaxVolume(AudioManager.STREAM_ALARM);
 
         // 現在の設定値を取得
-        mUseRingVolume = TimetonePreferences.getUseRingVolume(context);
+        mSilent = TimetonePreferences.getSilent(context);
         mVolume = TimetonePreferences.getVolume(context);
     }
 
@@ -46,22 +46,10 @@ public class TimetoneVolumePreference extends DialogPreference {
         mSeekBar.setMax(mMaxVolume);
         mSeekBar.setProgress(mVolume);
 
-        mCheckBox = (CheckBox) view.findViewById(R.id.useringvolume);
-        if (mUseRingVolume != false) {
+        mCheckBox = (CheckBox) view.findViewById(R.id.silent);
+        if (mSilent != false) {
             mCheckBox.setChecked(true);
-            mSeekBar.setEnabled(false);
         }
-
-        mCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mCheckBox.isChecked()) {
-                    mSeekBar.setEnabled(false);
-                } else {
-                    mSeekBar.setEnabled(true);
-                }
-            }
-        });
     }
 
     @Override
@@ -69,13 +57,13 @@ public class TimetoneVolumePreference extends DialogPreference {
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
-            mUseRingVolume = mCheckBox.isChecked();
+            mSilent = mCheckBox.isChecked();
             mVolume = mSeekBar.getProgress();
             //Log.d("debug", "use ring volume = " + mUseRingVolume);
             //Log.d("debug", "new volume = " + mVolume);
 
             Editor e = getSharedPreferences().edit();
-            e.putBoolean(TimetonePreferences.PREF_USE_RINGVOLUME_KEY, mUseRingVolume);
+            e.putBoolean(TimetonePreferences.PREF_SILENT_KEY, mSilent);
             e.putInt(TimetonePreferences.PREF_VOLUME_KEY, mVolume);
             e.commit();
         }

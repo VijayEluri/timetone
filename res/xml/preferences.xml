@@ -1,34 +1,34 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/preferences">
         <CheckBoxPreference android:defaultValue="true"
-            android:key="Enabled" android:title="@string/pref_enable_title"
+            android:key="enabled" android:title="@string/pref_enable_title"
             android:summary="@string/pref_enable_summary" />
         <ListPreference android:entryValues="@array/entryvalues_period"
             android:entries="@array/entries_period"
-            android:defaultValue="0" android:key="Period"
-            android:dependency="Enabled" android:title="@string/pref_period_title"
+            android:defaultValue="0" android:key="period"
+            android:dependency="enabled" android:title="@string/pref_period_title"
             android:summary="@string/pref_period_summary" />
         <net.assemble.timetone.TimetoneHoursPreference
-            android:key="Hours" android:title="@string/pref_hours_title"
+            android:key="hours" android:title="@string/pref_hours_title"
             android:summary="@string/pref_hours_summary"
-            android:persistent="false" android:dependency="Enabled" />
+            android:persistent="false" android:dependency="enabled" />
         <net.assemble.timetone.TimetoneVolumePreference
             android:summary="@string/pref_volume_summary" android:title="@string/pref_volume_title"
-            android:key="Volume" android:defaultValue="4"
-            android:dependency="Enabled" />
-        <CheckBoxPreference android:key="Vibrate"
+            android:key="volume" android:defaultValue="4"
+            android:dependency="enabled" />
+        <CheckBoxPreference android:key="vibrate"
             android:summary="@string/pref_vibrate_summary"
             android:title="@string/pref_vibrate_title"
-            android:defaultValue="false" android:dependency="Enabled" />
+            android:defaultValue="false" android:dependency="enabled" />
         <CheckBoxPreference android:summary="@string/pref_notificationicon_summary"
             android:title="@string/pref_notificationicon_title"
-            android:key="NotificationIcon" android:defaultValue="false"
-            android:dependency="Enabled" />
+            android:key="notification_icon" android:defaultValue="false"
+            android:dependency="enabled" />
         <Preference android:title="@string/testplay"
-            android:key="Test" android:dependency="Enabled" />
+            android:key="test" android:dependency="enabled" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/about">
         <Preference android:title="@string/about"
-            android:key="About" />
+            android:key="about" />
     </PreferenceCategory>
 </PreferenceScreen>
