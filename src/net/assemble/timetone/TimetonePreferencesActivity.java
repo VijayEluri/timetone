@@ -85,8 +85,7 @@ public class TimetonePreferencesActivity extends PreferenceActivity
         String[] entryvalues = getResources().getStringArray(R.array.entryvalues_period);
         for (int i = 0; i < entries.length; i++) {
             if (val.equals(entryvalues[i])) {
-                mPeriodPref.setSummary(getResources().getString(R.string.pref_period_summary) +
-                    ": " + entries[i]);
+                mPeriodPref.setSummary(entries[i]);
             }
         }
     }

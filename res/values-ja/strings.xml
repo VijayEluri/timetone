@@ -11,11 +11,9 @@
     <string name="media_volume_zero">メディア再生音量が無音に設定されているため、時報は鳴りません。</string>
     <string name="pref_title">設定</string>
     <string name="pref_enable_title">有効</string>
-    <string name="pref_enable_summary">時報を有効にします。</string>
     <string name="pref_vibrate_title">バイブレーション</string>
     <string name="pref_vibrate_summary">バイブレーションで通知します。</string>
     <string name="pref_period_title">間隔</string>
-    <string name="pref_period_summary">時報間隔</string>
     <string name="pref_hours_title">時刻</string>
     <string name="pref_hours_summary">時報をおこなう時刻を指定します。</string>
     <string name="pref_hours_suffix">時</string>

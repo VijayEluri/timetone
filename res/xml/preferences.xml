@@ -1,13 +1,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android:defaultValue="true"
+        android:key="enabled" android:title="@string/pref_enable_title" />
     <PreferenceCategory android:title="@string/preferences">
-        <CheckBoxPreference android:defaultValue="true"
-            android:key="enabled" android:title="@string/pref_enable_title"
-            android:summary="@string/pref_enable_summary" />
         <ListPreference android:entryValues="@array/entryvalues_period"
             android:entries="@array/entries_period"
             android:defaultValue="0" android:key="period"
-            android:dependency="enabled" android:title="@string/pref_period_title"
-            android:summary="@string/pref_period_summary" />
+            android:dependency="enabled" android:title="@string/pref_period_title" />
         <net.assemble.timetone.TimetoneHoursPreference
             android:key="hours" android:title="@string/pref_hours_title"
             android:summary="@string/pref_hours_summary"

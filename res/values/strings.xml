@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TimeTone</string>
+    <string name="app_name">Time Tone</string>
     <string name="app_description" />
     <string name="ok">OK</string>
-    <string name="service_started">TimeTone started.</string>
-    <string name="service_stopped">TimeTone stopped.</string>
-    <string name="testplay">Test tone</string>
-    <string name="preferences">Preferences</string>
+    <string name="service_started">Time Tone started.</string>
+    <string name="service_stopped">Time Tone stopped.</string>
+    <string name="testplay">Test</string>
+    <string name="preferences">Settings</string>
     <string name="about">About</string>
     <string name="feedback">Feedback</string>
     <string name="feedback_to">yh1224%2Borange@gmail.com</string>
     <string name="button_min_ems">8</string>
     <string name="media_volume_zero">Please increase Media volume to play tone.</string>
-    <string name="pref_title">Configuration</string>
+    <string name="pref_title">Settings</string>
     <string name="pref_enable_title">Enable</string>
-    <string name="pref_enable_summary">Enable time tone.</string>
     <string name="pref_vibrate_title">Vibrate</string>
     <string name="pref_vibrate_summary">Notify with vibration.</string>
-    <string name="pref_period_title">Tone period</string>
-    <string name="pref_period_summary">Tone interval</string>
+    <string name="pref_period_title">Period</string>
     <string name="pref_hours_title">Hours</string>
     <string name="pref_hours_summary">Specify tone time.</string>
     <string name="pref_hours_suffix">&#x00a0;o&#8216;clock</string>
