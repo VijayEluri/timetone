@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -19,12 +20,20 @@ import net.assemble.timetone.R;
  * 時刻読み上げ処理
  */
 public class TimetonePlay {
-    public static MediaPlayer g_Mp; // 再生中のMediaPlayer
+    private static final int RESTORE_VOLUME_RETRIES = 5;
+    private static final int RESTORE_VOLUME_RETRY_INTERVAL = 1000; /* ms */
+
+    private static MediaPlayer g_Mp = null; // 再生中のMediaPlayer
 
     private AudioManager mAudioManager;
     private AlarmManager mAlarmManager;
     private Context mCtx;
     private Calendar mCal;
+
+    private final Handler handler = new Handler();
+    private int origVol;
+    private int newVol;
+    private int retryRestore;
 
     /**
      * Constructor
@@ -102,20 +111,44 @@ public class TimetonePlay {
         if (mp == null) {
             return;
         }
-        final int origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
-        final int newVol = TimetonePreferences.getVolume(mCtx);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                if (mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM) == newVol) {
-                    mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
-                }
+                restoreVolume();
                 mp.release();
                 g_Mp = null;
             }
         });
+        origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
+        newVol = TimetonePreferences.getVolume(mCtx);
+        retryRestore = RESTORE_VOLUME_RETRIES;
+        if (Timetone.DEBUG) Log.d(Timetone.TAG, "Changing alarm volume: " + origVol + " -> " + newVol);
         mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
         mp.start();
+    }
+
+    /**
+     * 音量を元に戻す
+     */
+    private void restoreVolume() {
+        if (mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM) == newVol) {
+            // 音量が自分で変更したものと同じ場合のみ復元する
+            mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, origVol, 0);
+            if (Timetone.DEBUG) Log.d(Timetone.TAG, "Restored alarm volume: " + newVol + " -> " + origVol);
+        } else {
+            // 音量が他の要因により変更されていた場合、ちょっと時間を置いてリトライしてみる
+            retryRestore--;
+            if (retryRestore > 0) {
+                if (Timetone.DEBUG) Log.d(Timetone.TAG, "Pending restoring alarm volume: count=" + retryRestore);
+                //1.初回実行
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        restoreVolume();
+                    }
+                }, RESTORE_VOLUME_RETRY_INTERVAL);
+            }
+        }
     }
 
     /**
