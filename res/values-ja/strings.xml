@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">時報</string>
     <string name="app_description">時報をお知らせします！</string>
     <string name="service_started">時報を開始しました。</string>
@@ -25,4 +26,5 @@
     <string name="period_eachhour">1時間ごと</string>
     <string name="period_each30min">30分ごと</string>
     <string name="notify_expired">使用期限を過ぎました。最新版をご利用ください。</string>
+
 </resources>

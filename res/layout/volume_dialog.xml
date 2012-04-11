@@ -1,9 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
-    android:orientation="vertical" android:gravity="center_horizontal">
-    <SeekBar android:id="@+id/seekbar" android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:padding="20dip" />
-    <CheckBox android:text="@string/pref_volume_silent"
-        android:id="@+id/silent" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:layout_margin="10dip" />
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dip" />
+
+    <CheckBox
+        android:id="@+id/silent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:text="@string/pref_volume_silent" />
+
 </LinearLayout>

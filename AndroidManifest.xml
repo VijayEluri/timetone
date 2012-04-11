@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.assemble.timetone" android:versionName="1.6"
-    android:versionCode="144">
-    <application android:icon="@drawable/icon"
-        android:label="@string/app_name">
-        <activity android:label="@string/app_name"
+    package="net.assemble.timetone"
+    android:versionCode="144"
+    android:versionName="1.6" >
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity
             android:name=".TimetonePreferencesActivity"
-            android:launchMode="singleTask">
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".TimetoneReceiver">
+
+        <receiver android:name=".TimetoneReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.TIME_SET" />
@@ -20,16 +26,25 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
         <receiver android:name=".TimetoneAlarmReceiver" />
-        <activity android:name="net.assemble.android.AboutActivity"
+
+        <activity
+            android:name="net.assemble.android.AboutActivity"
             android:theme="@android:style/Theme.Dialog" />
+
         <service android:name="TimetoneService" />
     </application>
+
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-sdk android:minSdkVersion="2" android:targetSdkVersion="4" />
+
+    <uses-sdk
+        android:minSdkVersion="2"
+        android:targetSdkVersion="4" />
+
 </manifest>

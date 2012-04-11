@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Time Tone</string>
     <string name="app_description" />
     <string name="ok">OK</string>
@@ -19,7 +20,7 @@
     <string name="pref_period_title">Period</string>
     <string name="pref_hours_title">Hours</string>
     <string name="pref_hours_summary">Specify tone time.</string>
-    <string name="pref_hours_suffix">&#x00a0;o&#8216;clock</string>
+    <string name="pref_hours_suffix"> o‘clock</string>
     <string name="pref_volume_title">Volume</string>
     <string name="pref_volume_summary">Adjust tone volume.</string>
     <string name="pref_volume_silent">Mute on silent mode</string>
@@ -27,4 +28,5 @@
     <string name="pref_notificationicon_summary">Show icon on status bar.</string>
     <string name="period_eachhour">every hour</string>
     <string name="period_each30min">every 30 min.</string>
+
 </resources>

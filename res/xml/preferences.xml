@@ -1,32 +1,55 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android:defaultValue="true"
-        android:key="enabled" android:title="@string/pref_enable_title" />
-    <PreferenceCategory android:title="@string/preferences">
-        <ListPreference android:entryValues="@array/entryvalues_period"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="enabled"
+        android:title="@string/pref_enable_title" />
+
+    <PreferenceCategory android:title="@string/preferences" >
+        <ListPreference
+            android:defaultValue="0"
+            android:dependency="enabled"
             android:entries="@array/entries_period"
-            android:defaultValue="0" android:key="period"
-            android:dependency="enabled" android:title="@string/pref_period_title" />
+            android:entryValues="@array/entryvalues_period"
+            android:key="period"
+            android:title="@string/pref_period_title" />
+
         <net.assemble.timetone.TimetoneHoursPreference
-            android:key="hours" android:title="@string/pref_hours_title"
+            android:dependency="enabled"
+            android:key="hours"
+            android:persistent="false"
             android:summary="@string/pref_hours_summary"
-            android:persistent="false" android:dependency="enabled" />
+            android:title="@string/pref_hours_title" />
+
         <net.assemble.timetone.TimetoneVolumePreference
-            android:summary="@string/pref_volume_summary" android:title="@string/pref_volume_title"
-            android:key="volume" android:defaultValue="4"
-            android:dependency="enabled" />
-        <CheckBoxPreference android:key="vibrate"
+            android:defaultValue="4"
+            android:dependency="enabled"
+            android:key="volume"
+            android:summary="@string/pref_volume_summary"
+            android:title="@string/pref_volume_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="enabled"
+            android:key="vibrate"
             android:summary="@string/pref_vibrate_summary"
-            android:title="@string/pref_vibrate_title"
-            android:defaultValue="false" android:dependency="enabled" />
-        <CheckBoxPreference android:summary="@string/pref_notificationicon_summary"
-            android:title="@string/pref_notificationicon_title"
-            android:key="notification_icon" android:defaultValue="false"
-            android:dependency="enabled" />
-        <Preference android:title="@string/testplay"
-            android:key="test" android:dependency="enabled" />
+            android:title="@string/pref_vibrate_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="enabled"
+            android:key="notification_icon"
+            android:summary="@string/pref_notificationicon_summary"
+            android:title="@string/pref_notificationicon_title" />
+
+        <Preference
+            android:dependency="enabled"
+            android:key="test"
+            android:title="@string/testplay" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/about">
-        <Preference android:title="@string/about"
-            android:key="about" />
+    <PreferenceCategory android:title="@string/about" >
+        <Preference
+            android:key="about"
+            android:title="@string/about" />
     </PreferenceCategory>
+
 </PreferenceScreen>
