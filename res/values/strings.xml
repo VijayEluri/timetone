@@ -24,7 +24,7 @@
     <string name="pref_volume_summary">Adjust tone volume.</string>
     <string name="pref_volume_silent">Mute on silent mode</string>
     <string name="pref_notificationicon_title">Show Notification Icon</string>
-    <string name="pref_notificationicon_summary">Show icon on notification bar.</string>
+    <string name="pref_notificationicon_summary">Show icon on status bar.</string>
     <string name="period_eachhour">every hour</string>
     <string name="period_each30min">every 30 min.</string>
 </resources>

@@ -21,7 +21,7 @@
     <string name="pref_volume_summary">音の大きさを設定します。</string>
     <string name="pref_volume_silent">マナーモードでは鳴らさない</string>
     <string name="pref_notificationicon_title">通知アイコン</string>
-    <string name="pref_notificationicon_summary">通知バーにアイコンを表示します。</string>
+    <string name="pref_notificationicon_summary">ステータスバーにアイコンを表示します。</string>
     <string name="period_eachhour">1時間ごと</string>
     <string name="period_each30min">30分ごと</string>
     <string name="notify_expired">使用期限を過ぎました。最新版をご利用ください。</string>

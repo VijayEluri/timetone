@@ -10,7 +10,7 @@ public class TimetoneNotification {
     private static final int NOTIFICATIONID_ICON = 1;
     private static final int NOTIFICATIONID_EXPIRED = 2;
 
-    public static boolean g_Icon;       // 通知バーアイコン状態
+    public static boolean g_Icon;       // ステータスバーアイコン状態
 
     /**
      * ノーティフィケーションバーにアイコンを表示
