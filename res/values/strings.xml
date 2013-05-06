@@ -9,8 +9,8 @@
     <string name="testplay">Test</string>
     <string name="preferences">Settings</string>
     <string name="about">About</string>
-    <string name="feedback">Feedback</string>
-    <string name="feedback_to">yh1224%2Borange@gmail.com</string>
+    <string name="support">Support</string>
+    <string name="support_url">http://orleaf.net</string>
     <string name="button_min_ems">8</string>
     <string name="media_volume_zero">Please increase Media volume to play tone.</string>
     <string name="pref_title">Settings</string>

@@ -8,7 +8,7 @@
     <string name="testplay">テスト</string>
     <string name="preferences">設定</string>
     <string name="about">バージョン情報</string>
-    <string name="feedback">報告</string>
+    <string name="support">サポート</string>
     <string name="media_volume_zero">メディア再生音量が無音に設定されているため、時報は鳴りません。</string>
     <string name="pref_title">設定</string>
     <string name="pref_enable_title">有効</string>
