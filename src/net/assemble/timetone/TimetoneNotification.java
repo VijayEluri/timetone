@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
+import net.assemble.timetone.preferences.TimetonePreferencesActivity;
+
 public class TimetoneNotification {
     private static final int NOTIFICATIONID_ICON = 1;
     private static final int NOTIFICATIONID_EXPIRED = 2;

@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import net.assemble.timetone.R;
+import net.assemble.timetone.preferences.TimetonePreferences;
 
 /**
  * 時刻読み上げ処理

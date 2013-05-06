@@ -6,6 +6,8 @@ import android.content.BroadcastReceiver;
 import android.net.Uri;
 import android.util.Log;
 
+import net.assemble.timetone.preferences.TimetonePreferences;
+
 /**
  * Receiver for Broadcast Intent
  *

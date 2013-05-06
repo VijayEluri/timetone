@@ -14,14 +14,14 @@
             android:key="period"
             android:title="@string/pref_period_title" />
 
-        <net.assemble.timetone.TimetoneHoursPreference
+        <net.assemble.timetone.preferences.TimetoneHoursPreference
             android:dependency="enabled"
             android:key="hours"
             android:persistent="false"
             android:summary="@string/pref_hours_summary"
             android:title="@string/pref_hours_title" />
 
-        <net.assemble.timetone.TimetoneVolumePreference
+        <net.assemble.timetone.preferences.TimetoneVolumePreference
             android:defaultValue="4"
             android:dependency="enabled"
             android:key="volume"

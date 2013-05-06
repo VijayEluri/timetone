@@ -1,4 +1,4 @@
-package net.assemble.timetone;
+package net.assemble.timetone.preferences;
 
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -8,7 +8,8 @@ import android.content.SharedPreferences.Editor;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 
-import net.assemble.timetone.TimetonePreferences.Hours;
+import net.assemble.timetone.R;
+import net.assemble.timetone.preferences.TimetonePreferences.Hours;
 
 /**
  * 読み上げ時刻設定

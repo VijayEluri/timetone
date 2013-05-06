@@ -1,4 +1,4 @@
-package net.assemble.timetone;
+package net.assemble.timetone.preferences;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +9,10 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 
 import net.assemble.android.AboutActivity;
+import net.assemble.timetone.R;
+import net.assemble.timetone.Timetone;
+import net.assemble.timetone.TimetonePlay;
+import net.assemble.timetone.TimetoneService;
 
 /**
  * 設定画面

@@ -1,4 +1,4 @@
-package net.assemble.timetone;
+package net.assemble.timetone.preferences;
 
 import java.util.Calendar;
 
