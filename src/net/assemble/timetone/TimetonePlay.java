@@ -1,8 +1,10 @@
 package net.assemble.timetone;
 
 import java.util.Calendar;
+import java.util.List;
 import java.text.DateFormat;
 
+import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -23,6 +25,7 @@ import net.assemble.timetone.preferences.TimetonePreferences;
 public class TimetonePlay {
     private static final int RESTORE_VOLUME_RETRIES = 5;
     private static final int RESTORE_VOLUME_RETRY_INTERVAL = 1000; /* ms */
+    private static final int[] FLASH_PATTERN = new int[] { 100, 400, 100, 1000, 100, 400, 100 };
 
     private static MediaPlayer g_Mp = null; // 再生中のMediaPlayer
 
@@ -126,6 +129,44 @@ public class TimetonePlay {
         if (Timetone.DEBUG) Log.d(Timetone.TAG, "Changing alarm volume: " + origVol + " -> " + newVol);
         mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
         mp.start();
+
+        // フラッシュ
+        if (TimetonePreferences.getFlash(mCtx)) {
+            new Thread() {
+                @Override
+                public void run() {
+                    Camera camera;
+                    try {
+                        camera = Camera.open();
+                    } catch (Exception e) {
+                        return;
+                    }
+                    camera.startPreview();
+                    String flashMode = Camera.Parameters.FLASH_MODE_ON;
+                    Camera.Parameters params = camera.getParameters();
+                    List<String> modes = params.getSupportedFlashModes();
+                    if (modes.contains(Camera.Parameters.FLASH_MODE_TORCH)) {
+                        flashMode = Camera.Parameters.FLASH_MODE_TORCH;
+                    }
+                    boolean on = true;
+                    for (int i = 0; i < FLASH_PATTERN.length; i++) {
+                        if (on) {
+                            params.setFlashMode(flashMode);
+                        } else {
+                            params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                        }
+                        on = !on;
+                        camera.setParameters(params);
+                        try {
+                            Thread.sleep(FLASH_PATTERN[i]);
+                        } catch (InterruptedException e) {}
+                    }
+                    camera.stopPreview();
+                    camera.release();
+                    camera = null;
+                }
+            }.start();
+        }
     }
 
     /**

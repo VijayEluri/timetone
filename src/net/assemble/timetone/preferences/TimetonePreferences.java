@@ -29,6 +29,9 @@ public class TimetonePreferences
     public static final String PREF_VIBRATE_KEY = "vibrate";
     public static final boolean PREF_VIBRATE_DEFAULT = false;
 
+    public static final String PREF_FLASH_KEY = "flash";
+    public static final boolean PREF_FLASH_DEFAULT = false;
+
     public static final String PREF_HOURS_KEY = "hours";
     public static final int PREF_HOURS_DEFAULT = 0x00ffffff;
 
@@ -72,6 +75,11 @@ public class TimetonePreferences
     public static boolean getVibrate(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
                 PREF_VIBRATE_KEY, PREF_VIBRATE_DEFAULT);
+    }
+
+    public static boolean getFlash(Context ctx) {
+        return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
+                PREF_FLASH_KEY, PREF_FLASH_DEFAULT);
     }
 
     public static String getPeriod(Context ctx) {

@@ -4,6 +4,8 @@
     <string name="app_name">Time Tone</string>
     <string name="app_description" />
     <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="warning">Warning</string>
     <string name="service_started">Time Tone started.</string>
     <string name="service_stopped">Time Tone stopped.</string>
     <string name="testplay">Test</string>
@@ -17,6 +19,9 @@
     <string name="pref_enable_title">Enable</string>
     <string name="pref_vibrate_title">Vibrate</string>
     <string name="pref_vibrate_summary">Notify with vibration.</string>
+    <string name="pref_flash_title">Flash light</string>
+    <string name="pref_flash_summary">Notify with flash light.</string>
+    <string name="pref_flash_warning">Flash light doesn\'t work on some devices.</string>
     <string name="pref_period_title">Period</string>
     <string name="pref_hours_title">Hours</string>
     <string name="pref_hours_summary">Specify tone time.</string>

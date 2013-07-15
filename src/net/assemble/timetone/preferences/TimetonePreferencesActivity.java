@@ -1,8 +1,12 @@
 package net.assemble.timetone.preferences;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -20,6 +24,7 @@ import net.assemble.timetone.TimetoneService;
 public class TimetonePreferencesActivity extends PreferenceActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener
 {
+    private Preference mFlashPref;
     private Preference mTestPref;
     private Preference mAboutPref;
     private ListPreference mPeriodPref;
@@ -33,8 +38,13 @@ public class TimetonePreferencesActivity extends PreferenceActivity
         addPreferencesFromResource(R.xml.preferences);
 
         mPeriodPref = (ListPreference)findPreference(TimetonePreferences.PREF_PERIOD_KEY);
+        mFlashPref = (Preference)findPreference(TimetonePreferences.PREF_FLASH_KEY);
         mTestPref = (Preference)findPreference(TimetonePreferences.PREF_TEST_KEY);
         mAboutPref = (Preference)findPreference(TimetonePreferences.PREF_ABOUT_KEY);
+
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            mFlashPref.setEnabled(false);
+        }
 
         updateSummary();
     }
@@ -43,6 +53,16 @@ public class TimetonePreferencesActivity extends PreferenceActivity
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
         if (preference == mPeriodPref) {
+        } else if (preference == mFlashPref) {
+            final CheckBoxPreference checkbox = (CheckBoxPreference) preference;
+            if (checkbox.isChecked()) {
+                alertMessage(R.string.pref_flash_warning, null, new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        checkbox.setChecked(false);
+                    }
+                });
+            }
         } else if (preference == mTestPref) {
             new TimetonePlay(getApplicationContext()).playTest();
         } else if (preference == mAboutPref) {
@@ -92,6 +112,38 @@ public class TimetonePreferencesActivity extends PreferenceActivity
                 mPeriodPref.setSummary(entries[i]);
             }
         }
+    }
+
+    /**
+     * 警告をダイアログ表示
+     *
+     * @param message 表示するメッセージ
+     * @param negativeListener キャンセルされた場合のリスナ
+     */
+    private void alertMessage(String message, DialogInterface.OnClickListener clickListener, DialogInterface.OnCancelListener negativeListener) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.warning);
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.ok, null);
+        if (clickListener != null) {
+            builder.setPositiveButton(R.string.ok, clickListener);
+        }
+        if (negativeListener != null) {
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.setCancelable(true);
+            builder.setOnCancelListener(negativeListener);
+        }
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void alertMessage(int msgResId, DialogInterface.OnClickListener clickListener, DialogInterface.OnCancelListener negativeListener) {
+        alertMessage(getResources().getString(msgResId), clickListener, negativeListener);
     }
 
     @Override

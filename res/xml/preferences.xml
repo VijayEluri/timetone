@@ -37,6 +37,12 @@
         <CheckBoxPreference
             android:defaultValue="false"
             android:dependency="enabled"
+            android:key="flash"
+            android:summary="@string/pref_flash_summary"
+            android:title="@string/pref_flash_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="enabled"
             android:key="notification_icon"
             android:summary="@string/pref_notificationicon_summary"
             android:title="@string/pref_notificationicon_title" />

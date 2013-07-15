@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">時報</string>
+    <string name="cancel">キャンセル</string>
+    <string name="warning">警告</string>
     <string name="app_description">時報をお知らせします！</string>
     <string name="service_started">時報を開始しました。</string>
     <string name="service_stopped">時報を停止しました。</string>
@@ -14,6 +16,9 @@
     <string name="pref_enable_title">有効</string>
     <string name="pref_vibrate_title">バイブレーション</string>
     <string name="pref_vibrate_summary">バイブレーションで通知します。</string>
+    <string name="pref_flash_title">フラッシュライト</string>
+    <string name="pref_flash_summary">フラッシュライトで通知します。</string>
+    <string name="pref_flash_warning">フラッシュライトによる通知は、機種によっては動作しません。</string>
     <string name="pref_period_title">間隔</string>
     <string name="pref_hours_title">時刻</string>
     <string name="pref_hours_summary">時報をおこなう時刻を指定します。</string>
