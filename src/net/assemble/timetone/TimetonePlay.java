@@ -106,29 +106,27 @@ public class TimetonePlay {
         //  notificationManager.notify(R.string.app_name, notification);
         }
 
-        if (TimetonePreferences.getSilent(mCtx) &&
-                mAudioManager.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
-            return;
-        }
-
-        MediaPlayer mp = createMediaPlayer(getSound(mCal));
-        if (mp == null) {
-            return;
-        }
-        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                restoreVolume();
-                mp.release();
-                g_Mp = null;
+        // 時報音
+        if (!(TimetonePreferences.getSilent(mCtx) &&
+                mAudioManager.getRingerMode() != AudioManager.RINGER_MODE_NORMAL)) {
+            MediaPlayer mp = createMediaPlayer(getSound(mCal));
+            if (mp != null) {
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        restoreVolume();
+                        mp.release();
+                        g_Mp = null;
+                    }
+                });
+                origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
+                newVol = TimetonePreferences.getVolume(mCtx);
+                retryRestore = RESTORE_VOLUME_RETRIES;
+                if (Timetone.DEBUG) Log.d(Timetone.TAG, "Changing alarm volume: " + origVol + " -> " + newVol);
+                mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
+                mp.start();
             }
-        });
-        origVol = mAudioManager.getStreamVolume(AudioManager.STREAM_ALARM);
-        newVol = TimetonePreferences.getVolume(mCtx);
-        retryRestore = RESTORE_VOLUME_RETRIES;
-        if (Timetone.DEBUG) Log.d(Timetone.TAG, "Changing alarm volume: " + origVol + " -> " + newVol);
-        mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, newVol, 0);
-        mp.start();
+        }
 
         // フラッシュ
         if (TimetonePreferences.getFlash(mCtx)) {
