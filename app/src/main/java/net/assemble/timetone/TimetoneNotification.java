@@ -18,7 +18,7 @@ public class TimetoneNotification {
      * ノーティフィケーションバーにアイコンを表示
      */
     public static void showNotification(Context ctx) {
-        if (g_Icon != false) {
+        if (g_Icon) {
             return;
         }
         NotificationManager notificationManager = (NotificationManager)ctx.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -35,7 +35,7 @@ public class TimetoneNotification {
      * ノーティフィケーションバーのアイコンを消去
      */
     public static void clearNotification(Context ctx) {
-        if (g_Icon == false) {
+        if (!g_Icon) {
             return;
         }
         NotificationManager notificationManager = (NotificationManager)ctx.getSystemService(Context.NOTIFICATION_SERVICE);

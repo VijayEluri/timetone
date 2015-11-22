@@ -42,11 +42,7 @@ public class TimetoneService extends Service {
      * サービス動作有無取得
      */
     public static boolean isActive() {
-        if (mService != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return mService != null;
     }
 
     /**
@@ -77,7 +73,7 @@ public class TimetoneService extends Service {
             Intent i = new Intent();
             i.setComponent(mService);
             boolean res = ctx.stopService(i);
-            if (res == false) {
+            if (!res) {
                 Log.e(Timetone.TAG, "TimetoneService could not stop!");
             } else {
                 Log.d(Timetone.TAG, "TimetoneService stopped: " + mService);

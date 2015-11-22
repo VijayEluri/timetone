@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -38,11 +39,13 @@ public class TimetonePreferencesActivity extends PreferenceActivity
         addPreferencesFromResource(R.xml.preferences);
 
         mPeriodPref = (ListPreference)findPreference(TimetonePreferences.PREF_PERIOD_KEY);
-        mFlashPref = (Preference)findPreference(TimetonePreferences.PREF_FLASH_KEY);
-        mTestPref = (Preference)findPreference(TimetonePreferences.PREF_TEST_KEY);
-        mAboutPref = (Preference)findPreference(TimetonePreferences.PREF_ABOUT_KEY);
+        mFlashPref = findPreference(TimetonePreferences.PREF_FLASH_KEY);
+        mTestPref = findPreference(TimetonePreferences.PREF_TEST_KEY);
+        mAboutPref = findPreference(TimetonePreferences.PREF_ABOUT_KEY);
 
-        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+        if (Build.VERSION.SDK_INT < 5) {
+            mFlashPref.setEnabled(false);
+        } else if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
             mFlashPref.setEnabled(false);
         }
 
@@ -52,8 +55,7 @@ public class TimetonePreferencesActivity extends PreferenceActivity
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
-        if (preference == mPeriodPref) {
-        } else if (preference == mFlashPref) {
+        if (preference == mFlashPref) {
             final CheckBoxPreference checkbox = (CheckBoxPreference) preference;
             if (checkbox.isChecked()) {
                 alertMessage(R.string.pref_flash_warning, null, new DialogInterface.OnCancelListener() {
@@ -157,6 +159,7 @@ public class TimetonePreferencesActivity extends PreferenceActivity
     private void updateService() {
         // ライセンスフラグ設定
         //  有料版を使ったことがある場合は購入メニューを表示させない
+        //noinspection PointlessBooleanExpression
         if (!Timetone.FREE_VERSION) {
             TimetonePreferences.setLicensed(this, true);
         }

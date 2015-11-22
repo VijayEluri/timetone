@@ -22,6 +22,7 @@ public class Timetone {
      */
     @SuppressWarnings("unused")
     public static boolean checkExpiration(Context ctx) {
+        //noinspection PointlessBooleanExpression
         if (FREE_VERSION && FREE_EXPIRES != null) {
             Date today = new Date();
             try {
@@ -34,7 +35,9 @@ public class Timetone {
                 } else {
                     Log.d(TAG, "Expires on " + expire_date.toLocaleString());
                 }
-            } catch (ParseException e) {}
+            } catch (ParseException e) {
+                throw new AssertionError(e);
+            }
         }
         return true;
     }

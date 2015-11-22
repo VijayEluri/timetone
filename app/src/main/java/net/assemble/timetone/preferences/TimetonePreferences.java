@@ -24,6 +24,7 @@ public class TimetonePreferences
     public static final String PREF_PERIOD_KEY = "period";
     public static final String PREF_PERIOD_DEFAULT = "0";
     public static final String PREF_PERIOD_EACHHOUR = "0";
+    @SuppressWarnings("unused")
     public static final String PREF_PERIOD_EACH30MIN = "1";
 
     public static final String PREF_VIBRATE_KEY = "vibrate";
@@ -48,8 +49,7 @@ public class TimetonePreferences
 
     public static final String PREF_ABOUT_KEY = "about";
 
-    SharedPreferences mPref;
-
+    @SuppressWarnings("unused")
     public static boolean getLicensed(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx).getBoolean(
                 PREF_LICENSED_KEY, PREF_LICENSED_DEFAULT);

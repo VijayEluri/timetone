@@ -4,10 +4,12 @@ import java.util.Calendar;
 import java.util.List;
 import java.text.DateFormat;
 
+import android.annotation.TargetApi;
 import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.app.AlarmManager;
@@ -16,7 +18,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import net.assemble.timetone.R;
 import net.assemble.timetone.preferences.TimetonePreferences;
 
 /**
@@ -32,7 +33,6 @@ public class TimetonePlay {
     private AudioManager mAudioManager;
     private AlarmManager mAlarmManager;
     private Context mCtx;
-    private Calendar mCal;
 
     private final Handler handler = new Handler();
     private int origVol;
@@ -42,7 +42,7 @@ public class TimetonePlay {
     /**
      * Constructor
      *
-     * @param context
+     * @param context Context
      */
     public TimetonePlay(Context context) {
         mCtx = context;
@@ -54,7 +54,7 @@ public class TimetonePlay {
      * MediaPlayer生成
      * 着信音量をMediaPlayerに設定する。
      *
-     * @param mp 設定するMediaPlayer
+     * @param resid リソースID
      */
     private MediaPlayer createMediaPlayer(int resid) {
         // 再生中の音声があれば停止する。
@@ -85,8 +85,6 @@ public class TimetonePlay {
      *            再生日時
      */
     public void play(Calendar cal) {
-        mCal = cal;
-
         // バイブレーション
         if (TimetonePreferences.getVibrate(mCtx)) {
             Vibrator vibrator = (Vibrator) mCtx.getSystemService(Context.VIBRATOR_SERVICE);
@@ -109,7 +107,7 @@ public class TimetonePlay {
         // 時報音
         if (!(TimetonePreferences.getSilent(mCtx) &&
                 mAudioManager.getRingerMode() != AudioManager.RINGER_MODE_NORMAL)) {
-            MediaPlayer mp = createMediaPlayer(getSound(mCal));
+            MediaPlayer mp = createMediaPlayer(getSound(cal));
             if (mp != null) {
                 mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -129,8 +127,9 @@ public class TimetonePlay {
         }
 
         // フラッシュ
-        if (TimetonePreferences.getFlash(mCtx)) {
+        if (TimetonePreferences.getFlash(mCtx) && Build.VERSION.SDK_INT >= 5) {
             new Thread() {
+                @TargetApi(5)
                 @Override
                 public void run() {
                     Camera camera;
@@ -147,7 +146,7 @@ public class TimetonePlay {
                         flashMode = Camera.Parameters.FLASH_MODE_TORCH;
                     }
                     boolean on = true;
-                    for (int i = 0; i < FLASH_PATTERN.length; i++) {
+                    for (int msec : FLASH_PATTERN) {
                         if (on) {
                             params.setFlashMode(flashMode);
                         } else {
@@ -156,12 +155,12 @@ public class TimetonePlay {
                         on = !on;
                         camera.setParameters(params);
                         try {
-                            Thread.sleep(FLASH_PATTERN[i]);
-                        } catch (InterruptedException e) {}
+                            Thread.sleep(msec);
+                        } catch (InterruptedException ignored) {
+                        }
                     }
                     camera.stopPreview();
                     camera.release();
-                    camera = null;
                 }
             }.start();
         }
@@ -220,6 +219,7 @@ public class TimetonePlay {
      *            日時
      * @return 音声リソースID
      */
+    @SuppressWarnings("UnusedParameters")
     private static int getSound(Calendar cal) {
         return R.raw.tone;
     }
@@ -286,7 +286,6 @@ public class TimetonePlay {
      */
     public PendingIntent pendingIntent() {
         Intent intent = new Intent(mCtx, TimetoneAlarmReceiver.class);
-        PendingIntent sender = PendingIntent.getBroadcast(mCtx, 0, intent, 0);
-        return sender;
+        return PendingIntent.getBroadcast(mCtx, 0, intent, 0);
     }
 }

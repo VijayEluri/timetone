@@ -47,7 +47,7 @@ public class TimetoneVolumePreference extends DialogPreference {
         mSeekBar.setProgress(mVolume);
 
         mCheckBox = (CheckBox) view.findViewById(R.id.silent);
-        if (mSilent != false) {
+        if (mSilent) {
             mCheckBox.setChecked(true);
         }
     }
@@ -69,6 +69,7 @@ public class TimetoneVolumePreference extends DialogPreference {
         }
     }
 
+    @SuppressWarnings("unused")
     protected static SeekBar getSeekBar(View dialogView) {
         return (SeekBar) dialogView.findViewById(R.id.seekbar);
     }

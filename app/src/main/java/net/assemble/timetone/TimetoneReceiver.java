@@ -20,7 +20,7 @@ public class TimetoneReceiver extends BroadcastReceiver
         Log.d(Timetone.TAG, "received intent: " + intent.getAction());
 
         TimetonePreferences.upgrade(ctx);
-        if (TimetonePreferences.getEnabled(ctx) == false) {
+        if (!TimetonePreferences.getEnabled(ctx)) {
             return;
         }
 
@@ -47,8 +47,6 @@ public class TimetoneReceiver extends BroadcastReceiver
                 // Restart alarm
                 TimetoneService.startService(ctx);
             }
-            return;
         }
     }
-
 }
