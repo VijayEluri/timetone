@@ -24,7 +24,8 @@ public class TimetoneNotification {
         NotificationManager notificationManager = (NotificationManager)ctx.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = new Notification(R.drawable.icon, ctx.getResources().getString(R.string.app_name), System.currentTimeMillis());
         Intent intent = new Intent(ctx, TimetonePreferencesActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, intent, 0);
         notification.setLatestEventInfo(ctx, ctx.getResources().getString(R.string.app_name), ctx.getResources().getString(R.string.app_description), contentIntent);
         notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
         notificationManager.notify(NOTIFICATIONID_ICON, notification);
@@ -52,7 +53,8 @@ public class TimetoneNotification {
                       ctx.getResources().getString(R.string.app_name),
                       System.currentTimeMillis());
         Intent intent = new Intent(ctx, TimetonePreferencesActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, intent, 0);
         String message = ctx.getResources().getString(R.string.notify_expired);
         notification.setLatestEventInfo(ctx,
                 ctx.getResources().getString(R.string.app_name),
