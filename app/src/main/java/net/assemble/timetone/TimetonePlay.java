@@ -95,13 +95,6 @@ public class TimetonePlay {
                 pattern = new long[] {500, 200, 100, 200};
             }
             vibrator.vibrate(pattern, -1);
-
-        //  // Receiverからは直接振動させられないため、Notificationを経由する
-        //  // ->そんなことはなかった
-        //  NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
-        //  Notification notification = new Notification();
-        //  notification.vibrate = pattern;
-        //  notificationManager.notify(R.string.app_name, notification);
         }
 
         // 時報音

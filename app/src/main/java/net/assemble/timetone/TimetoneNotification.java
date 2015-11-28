@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 
 import net.assemble.timetone.preferences.TimetonePreferencesActivity;
 
@@ -21,14 +22,23 @@ public class TimetoneNotification {
         if (g_Icon) {
             return;
         }
-        NotificationManager notificationManager = (NotificationManager)ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notification = new Notification(R.drawable.icon, ctx.getResources().getString(R.string.app_name), System.currentTimeMillis());
+
         Intent intent = new Intent(ctx, TimetonePreferencesActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, intent, 0);
-        notification.setLatestEventInfo(ctx, ctx.getResources().getString(R.string.app_name), ctx.getResources().getString(R.string.app_description), contentIntent);
-        notification.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+
+        Notification notification = new NotificationCompat.Builder(ctx)
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle(ctx.getResources().getString(R.string.app_name))
+                .setContentText(ctx.getResources().getString(R.string.app_description))
+                .setContentIntent(contentIntent)
+                .setWhen(System.currentTimeMillis())
+                .setOngoing(true)
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATIONID_ICON, notification);
+
         g_Icon = true;
     }
 
@@ -48,20 +58,20 @@ public class TimetoneNotification {
      * 期限切れ通知
      */
     public static void showExpiredNotify(Context ctx) {
-        NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notification = new Notification(R.drawable.icon,
-                      ctx.getResources().getString(R.string.app_name),
-                      System.currentTimeMillis());
         Intent intent = new Intent(ctx, TimetonePreferencesActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, intent, 0);
-        String message = ctx.getResources().getString(R.string.notify_expired);
-        notification.setLatestEventInfo(ctx,
-                ctx.getResources().getString(R.string.app_name),
-                message, contentIntent);
-        notification.defaults = Notification.DEFAULT_ALL;
-        notification.flags = Notification.FLAG_SHOW_LIGHTS;
+
+        Notification notification = new NotificationCompat.Builder(ctx)
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle(ctx.getResources().getString(R.string.app_name))
+                .setWhen(System.currentTimeMillis())
+                .setContentText(ctx.getResources().getString(R.string.notify_expired))
+                .setContentIntent(contentIntent)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATIONID_EXPIRED, notification);
     }
-
 }
