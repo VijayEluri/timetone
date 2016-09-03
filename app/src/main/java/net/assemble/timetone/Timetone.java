@@ -10,7 +10,6 @@ import android.util.Log;
 public class Timetone {
     public static final String TAG = "Timetone";
 
-    public static final boolean DEBUG = false;
     public static final boolean FREE_VERSION = false;
     public static final String FREE_EXPIRES = "2010/10/30";
 
