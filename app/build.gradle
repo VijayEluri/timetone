@@ -8,6 +8,8 @@ android {
         applicationId "net.assemble.timetone"
         minSdkVersion 4
         targetSdkVersion 19
+        versionCode 146
+        versionName "1.7.1"
     }
 
     buildTypes {

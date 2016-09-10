@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.assemble.timetone"
-    android:versionCode="146"
-    android:versionName="1.7.1" >
-
-    <uses-sdk />
+    package="net.assemble.timetone" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
