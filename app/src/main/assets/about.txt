@@ -2,4 +2,4 @@ Notify with simple time tone every hour or every 30 min.
 
 EXCLUDE IT FROM TASKKILLERS!
 
-Copyright 2010-2013 Orange leaf
+Copyright 2010-2016 Orange leaf
