@@ -33,13 +33,13 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".TimetoneAlarmReceiver" />
 
         <activity
             android:name="net.assemble.android.AboutActivity"
             android:theme="@android:style/Theme.Dialog" />
 
-        <service android:name=".TimetoneService" />
-        <service android:name=".TimetoneAlarmService" />
+        <service android:name="TimetoneService" />
     </application>
 
 </manifest>
