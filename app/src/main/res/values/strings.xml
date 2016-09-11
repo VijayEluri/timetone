@@ -3,7 +3,7 @@
 
     <string name="app_name">Time Tone</string>
     <string name="app_description" />
-    <string name="ok">OK</string>
+    <string name="ok" translatable="false">OK</string>
     <string name="cancel">Cancel</string>
     <string name="warning">Warning</string>
     <string name="service_started">Time Tone started.</string>
@@ -12,8 +12,8 @@
     <string name="preferences">Settings</string>
     <string name="about">About</string>
     <string name="support">Support</string>
-    <string name="support_url">http://orleaf.net</string>
-    <string name="button_min_ems">8</string>
+    <string name="support_url" translatable="false">http://orleaf.net</string>
+    <string name="button_min_ems" translatable="false">8</string>
     <string name="media_volume_zero">Please increase Media volume to play tone.</string>
     <string name="pref_title">Settings</string>
     <string name="pref_enable_title">Enable</string>
@@ -33,5 +33,6 @@
     <string name="pref_notificationicon_summary">Show icon on status bar.</string>
     <string name="period_eachhour">every hour</string>
     <string name="period_each30min">every 30 min.</string>
+    <string name="notify_expired">Trial period expired. Plase update to latest version.</string>
 
 </resources>

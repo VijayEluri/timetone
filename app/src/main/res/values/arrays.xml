@@ -5,7 +5,7 @@
         <item>@string/period_eachhour</item>
         <item>@string/period_each30min</item>
     </string-array>
-    <string-array name="entryvalues_period">
+    <string-array name="entryvalues_period" translatable="false">
         <item>0</item>
         <item>1</item>
     </string-array>
