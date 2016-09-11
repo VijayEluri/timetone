@@ -1,12 +1,18 @@
 package net.assemble.timetone.preferences;
 
-import android.app.AlertDialog.Builder;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Bundle;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.CheckedTextView;
+import android.widget.ListView;
 
 import net.assemble.timetone.R;
 import net.assemble.timetone.preferences.TimetonePreferences.Hours;
@@ -51,21 +57,19 @@ public class TimetoneHoursPreference extends ListPreference
     }
 
     @Override
-    protected void onPrepareDialogBuilder(Builder builder) {
+    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
         mPref = getSharedPreferences();
         int hours = mPref.getInt(TimetonePreferences.PREF_HOURS_KEY, TimetonePreferences.PREF_HOURS_DEFAULT);
         Hours eh = new Hours(hours);
         setHours(eh);
 
-        builder.setMultiChoiceItems(
-            getEntries(), mHours.getBooleanArray(),
+        builder.setMultiChoiceItems(getEntries(), mHours.getBooleanArray(),
             new DialogInterface.OnMultiChoiceClickListener() {
-                public void onClick(DialogInterface dialog, int which,
-                        boolean isChecked) {
+                public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                     mNewHours.set(which, isChecked);
                 }
-            });
-
+            }
+        );
     }
 
     public void setHours(Hours eh) {
@@ -76,5 +80,39 @@ public class TimetoneHoursPreference extends ListPreference
     @SuppressWarnings("unused")
     public Hours getHours() {
         return mHours;
+    }
+
+    @Override
+    protected void showDialog(Bundle state) {
+        super.showDialog(state);
+
+        // Workaround for Issue 205487 (API 23)
+        // https://code.google.com/p/android/issues/detail?id=205487
+        AlertDialog dialog = (AlertDialog) getDialog();
+        if (dialog != null && Build.VERSION.SDK_INT >= 23) {
+            ListView listView = dialog.getListView();
+
+            listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(AbsListView view, int scrollState) {
+                    int size = view.getChildCount();
+                    for (int i=0; i<size; i++) {
+                        View v = view.getChildAt(i);
+                        if (v instanceof CheckedTextView)
+                            v.refreshDrawableState();
+                    }
+                }
+
+                @Override
+                public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                    int size = view.getChildCount();
+                    for (int i=0; i<size; i++) {
+                        View v = view.getChildAt(i);
+                        if (v instanceof CheckedTextView)
+                            ((CheckedTextView)v).refreshDrawableState();
+                    }
+                }
+            });
+        }
     }
 }
