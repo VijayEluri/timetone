@@ -2,7 +2,6 @@ package net.assemble.timetone;
 
 import android.annotation.TargetApi;
 import android.app.Service;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
@@ -21,14 +20,14 @@ public class TimetoneService extends Service {
 
     public static final String ACTION_ALARM = "net.assemble.timetone.action.ALARM";
 
-    private static ComponentName mService;
     private TimetonePlay mPlay;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mPlay = new TimetonePlay(this);
-        mPlay.setAlarm();
+        Log.d(TAG, "Service started.");
+        Toast.makeText(this, R.string.service_started, Toast.LENGTH_SHORT).show();
     }
 
     // This is the old onStart method that will be called on the pre-2.0
@@ -70,6 +69,8 @@ public class TimetoneService extends Service {
 
     public void onDestroy() {
         mPlay.resetAlarm();
+        Log.d(TAG, "Service stopped.");
+        Toast.makeText(this, R.string.service_stopped, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -79,47 +80,20 @@ public class TimetoneService extends Service {
 
 
     /**
-     * サービス動作有無取得
-     */
-    public static boolean isActive() {
-        return mService != null;
-    }
-
-    /**
      * サービス開始
+     *
+     * @param ctx Context
      */
-    public static boolean startService(Context ctx) {
-        boolean result;
-        boolean restart = isActive();
-        mService = ctx.startService(new Intent(ctx, TimetoneService.class));
-        if (mService == null) {
-            Log.e(Timetone.TAG, "TimetoneService could not start!");
-            result = false;
-        } else {
-            Log.d(Timetone.TAG, "TimetoneService started: " + mService);
-            result = true;
-        }
-        if (!restart && result) {
-            Toast.makeText(ctx, R.string.service_started, Toast.LENGTH_SHORT).show();
-        }
-        return result;
+    public static void startService(Context ctx) {
+        ctx.startService(new Intent(ctx, TimetoneService.class));
     }
 
     /**
      * サービス停止
+     *
+     * @param ctx Context
      */
     public static void stopService(Context ctx) {
-        if (mService != null) {
-            Intent i = new Intent();
-            i.setComponent(mService);
-            boolean res = ctx.stopService(i);
-            if (!res) {
-                Log.e(Timetone.TAG, "TimetoneService could not stop!");
-            } else {
-                Log.d(Timetone.TAG, "TimetoneService stopped: " + mService);
-                Toast.makeText(ctx, R.string.service_stopped, Toast.LENGTH_SHORT).show();
-                mService = null;
-            }
-        }
+        ctx.stopService(new Intent(ctx, TimetoneService.class));
     }
 }
