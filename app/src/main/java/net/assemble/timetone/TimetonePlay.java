@@ -278,7 +278,8 @@ public class TimetonePlay {
      * PendingIntent取得
      */
     public PendingIntent pendingIntent() {
-        Intent intent = new Intent(mCtx, TimetoneAlarmService.class);
+        Intent intent = new Intent(mCtx, TimetoneService.class);
+        intent.setAction(TimetoneService.ACTION_ALARM);
         return PendingIntent.getService(mCtx, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 }
