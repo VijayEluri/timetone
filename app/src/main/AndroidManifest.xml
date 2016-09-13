@@ -39,7 +39,6 @@
             android:theme="@android:style/Theme.Dialog" />
 
         <service android:name=".TimetoneService" />
-        <service android:name=".TimetoneAlarmService" />
     </application>
 
 </manifest>
