@@ -220,31 +220,31 @@ public class TimetonePlay {
     /**
      * タイマ設定
      *
-     * @param cal
-     *            設定日時
+     * @param cal 設定日時
      */
-    public void setAlarm(Calendar cal, long interval) {
+    public void setAlarm(Calendar cal) {
         mAlarmManager.cancel(pendingIntent());
         long next = cal.getTimeInMillis();
         next -= (next % 1000);
-        mAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, next, interval,
-                pendingIntent());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mAlarmManager.setExact(AlarmManager.RTC_WAKEUP, next, pendingIntent());
+        } else {
+            mAlarmManager.set(AlarmManager.RTC_WAKEUP, next, pendingIntent());
+        }
         Log.d(Timetone.TAG, "set alarm: "
                 + DateFormat.getDateTimeInstance().format(cal.getTime())
-                + " (msec=" + next + ", interval=" + interval + ")");
+                + " (msec=" + next + ")");
     }
 
     /**
      * 設定に従ってタイマを設定
      */
     public void setAlarm() {
-        long interval;
         Calendar cal = Calendar.getInstance();
         if (TimetonePreferences.getPeriod(mCtx).equals(TimetonePreferences.PREF_PERIOD_EACHHOUR)) {
             // each hour
             cal.set(Calendar.MINUTE, 0);
             cal.add(Calendar.HOUR, 1);
-            interval = 60 * 60 * 1000/*AlarmManager.INTERVAL_HOUR*/;
         } else {
             // each 30min.
             if (cal.get(Calendar.MINUTE) >= 30) {
@@ -253,10 +253,9 @@ public class TimetonePlay {
             } else {
                 cal.set(Calendar.MINUTE, 30);
             }
-            interval = 30 * 60 * 1000/*AlarmManager.INTERVAL_HALF_HOUR*/;
         }
         cal.set(Calendar.SECOND, 0);
-        setAlarm(cal, interval);
+        setAlarm(cal);
 
         if (TimetonePreferences.getNotificationIcon(mCtx)) {
             TimetoneNotification.showNotification(mCtx);
