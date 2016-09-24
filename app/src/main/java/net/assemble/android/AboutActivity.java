@@ -34,8 +34,12 @@ public class AboutActivity extends Activity
         }
         try {
             PackageInfo pi = getPackageManager().getPackageInfo(getPackageName(), 0);
-            title += " ver." + pi.versionName;
-        } catch (NameNotFoundException ignored) {}
+            if (pi.versionName != null) {
+                title += " " + pi.versionName;
+            }
+        } catch (NameNotFoundException e) {
+            throw new AssertionError(e);
+        }
         setTitle(title);
 
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
@@ -53,7 +57,9 @@ public class AboutActivity extends Activity
             try {
                 String str = ar.getText(bodyAsset);
                 text.setText(str);
-            } catch (IOException ignored) {}
+            } catch (IOException e) {
+                throw new AssertionError(e);
+            }
         }
 
         // OK
